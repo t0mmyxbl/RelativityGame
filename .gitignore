@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+UE4RelativityGame/.vs/UE4RelativityGame/v15/.suo
+*.log
+*.db
+*.opendb

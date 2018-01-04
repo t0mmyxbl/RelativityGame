@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\UE4RelativityGame.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{841CB131-6CCF-49B8-A887-CACA25B704F9}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\UE4RelativityGame.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\UE4RelativityGameEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{F3B67AED-5F95-4FE8-A3C2-4E3390C9F37B}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\UE4RelativityGame">
+			<UniqueIdentifier>{23F4486C-3181-4005-A3FB-A05CFA8E52F0}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\UE4RelativityGame\UE4RelativityGame.Build.cs">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\UE4RelativityGame\UE4RelativityGame.cpp">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\UE4RelativityGame\UE4RelativityGame.h">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\UE4RelativityGame\UE4RelativityGameCharacter.cpp">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\UE4RelativityGame\UE4RelativityGameCharacter.h">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\UE4RelativityGame\UE4RelativityGameGameMode.cpp">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\UE4RelativityGame\UE4RelativityGameGameMode.h">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\UE4RelativityGame\UE4RelativityGameHUD.cpp">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\UE4RelativityGame\UE4RelativityGameHUD.h">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\UE4RelativityGame\UE4RelativityGameProjectile.cpp">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\UE4RelativityGame\UE4RelativityGameProjectile.h">
+			<Filter>Source\UE4RelativityGame</Filter>
+		</ClInclude >
+	</ItemGroup>
+</Project>
