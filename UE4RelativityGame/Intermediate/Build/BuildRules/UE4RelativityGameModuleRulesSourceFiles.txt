@@ -1,3 +1,0 @@
-T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Source\UE4RelativityGame\UE4RelativityGame.Build.cs
-T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Source\UE4RelativityGame.Target.cs
-T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Source\UE4RelativityGameEditor.Target.cs
