@@ -119,6 +119,10 @@ void AUE4RelativityGameCharacter::SetupPlayerInputComponent(class UInputComponen
 	// Bind fire event
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AUE4RelativityGameCharacter::OnFire);
 
+	PlayerInputComponent->BindAction("InvertGravity", IE_Pressed, this, &AUE4RelativityGameCharacter::InvertGravity);
+	PlayerInputComponent->BindAction("InvertGravity", IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction("InvertGravity", IE_Released, this, &ACharacter::StopJumping);
+
 	// Enable touchscreen input
 	EnableTouchscreenMovement(PlayerInputComponent);
 
@@ -135,6 +139,24 @@ void AUE4RelativityGameCharacter::SetupPlayerInputComponent(class UInputComponen
 	PlayerInputComponent->BindAxis("TurnRate", this, &AUE4RelativityGameCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &AUE4RelativityGameCharacter::LookUpAtRate);
+}
+
+void AUE4RelativityGameCharacter::InvertGravity() {
+	AWorldSettings* MyWorldSettings = GetWorldSettings();
+	MyWorldSettings->bGlobalGravitySet = true;
+
+	if (MyWorldSettings->GlobalGravityZ >= 960)
+	{
+		MyWorldSettings->GlobalGravityZ = -980;
+	}
+	else
+	{
+		MyWorldSettings->GlobalGravityZ = 980;
+
+	}
+	//MyWorldSettings->GlobalGravityZ = MyWorldSettings->GlobalGravityZ * -1;
+
+
 }
 
 void AUE4RelativityGameCharacter::OnFire()

@@ -124,7 +124,7 @@
 		</ProjectConfiguration>
 	</ItemGroup>
 	<PropertyGroup Label="Globals">
-		<ProjectGuid>{43462A1C-4A56-4009-A022-321F8FC9A330}</ProjectGuid>
+		<ProjectGuid>{3CBF536F-FDF0-4E12-A693-190384F12942}</ProjectGuid>
 		<Keyword>MakeFileProj</Keyword>
 		<RootNamespace>UE4RelativityGame</RootNamespace>
 		<PlatformToolset>v141</PlatformToolset>

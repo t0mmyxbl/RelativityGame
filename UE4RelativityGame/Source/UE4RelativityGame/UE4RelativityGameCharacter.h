@@ -82,6 +82,8 @@ public:
 
 protected:
 	
+	void InvertGravity();
+
 	/** Fires a projectile. */
 	void OnFire();
 

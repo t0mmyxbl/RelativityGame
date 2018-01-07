@@ -1,0 +1,22 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-UE4RelativityGame-9732.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"T:\Program Files\Unreal\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGame.cpp.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGameCharacter.cpp.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGameGameMode.cpp.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGameHUD.cpp.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGameProjectile.cpp.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGame.init.gen.cpp.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGameCharacter.gen.cpp.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGameGameMode.gen.cpp.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGameHUD.gen.cpp.obj"
+"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\UE4RelativityGameProjectile.gen.cpp.obj"
+"T:\Program Files\Unreal\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\UE4RelativityGame\PCLaunch.rc.res"
+"T:\Program Files\Unreal\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\ModuleVersionResource.rc.inl.res"
+/OUT:"T:\University\Year2\PDP\Project\Repository\RelativityGame\RelativityGame\UE4RelativityGame\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-UE4RelativityGame-9732.lib"
