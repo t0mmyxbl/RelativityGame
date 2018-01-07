@@ -148,13 +148,13 @@ void AUE4RelativityGameCharacter::InvertGravity() {
 	if (MyWorldSettings->GlobalGravityZ >= 960)
 	{
 		MyWorldSettings->GlobalGravityZ = -980;
+
 	}
 	else
 	{
 		MyWorldSettings->GlobalGravityZ = 980;
 
 	}
-	//MyWorldSettings->GlobalGravityZ = MyWorldSettings->GlobalGravityZ * -1;
 
 
 }
