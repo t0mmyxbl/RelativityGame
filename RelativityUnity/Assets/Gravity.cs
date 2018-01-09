@@ -9,12 +9,10 @@ public class Gravity : MonoBehaviour {
 	public Rigidbody rb;
 	bool inverted;
 
-
 	void Start()
 	{
 		inverted = false;
 		rb = GetComponent<Rigidbody>();
-
 	}
 
 	void FixedUpdate()
@@ -22,10 +20,24 @@ public class Gravity : MonoBehaviour {
 		if (Input.GetKeyDown ("g"))
 			ChangeGravity ();
 
-		if (inverted)
-			rb.AddForce (0, -5, 0);
-		else
-			rb.AddForce (0, 5, 0);
+        if (gameObject.tag != "Player")
+        {
+		    if (inverted)
+			    rb.AddForce (0, 5, 0);
+		    else
+			    rb.AddForce (0, -5, 0);
+        }
+        else
+        {
+			if (inverted) {
+				
+			} else {
+				
+			}
+        }
+
+
+
 	}
 
 
