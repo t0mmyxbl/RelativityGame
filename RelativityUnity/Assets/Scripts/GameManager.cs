@@ -1,0 +1,100 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.SceneManagement;
+
+public class GameManager : MonoBehaviour {
+
+	enum GameState { START, OPTIONS, HELP, IN_GAME, END};
+	private GameState gameState;
+
+	[SerializeField] private GameState startState = GameState.START;
+
+	static private GameManager instance = null;
+
+	public static GameManager Instance
+	{
+		get
+		{
+			return instance;
+		}
+	}
+
+	void Awake(){
+		if (instance != null) {
+			Destroy (gameObject);
+
+			instance = this;
+		}
+	}
+
+	// Use this for initialization
+	void Start () {
+		gameState = startState;
+	}
+
+	void OnChangeState (GameState newState) {
+		if (gameState != newState) {
+
+			switch (newState) 
+			{
+			case GameState.START:
+				Time.timeScale = 0;
+				SceneManager.LoadScene ("MainMenu");
+
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+
+				break;
+			case GameState.OPTIONS:
+				Time.timeScale = 0;
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+					break;
+				case GameState.HELP:
+				Time.timeScale = 0;
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+					break;
+			case GameState.IN_GAME:
+				Time.timeScale = 1;
+				SceneManager.LoadScene ("Level1");
+					break;
+				case GameState.END:
+					break;
+			}
+
+			gameState = newState;
+		}
+	}
+
+	private void EnableInput(bool input){
+		GameObject player = GameObject.FindGameObjectWithTag ("Player");
+		player.GetComponent<FirstPersonController> ().enabled = input;
+	}
+
+	public void Menu(){
+		OnChangeState (GameState.START);
+	}
+
+	public void PlayGame(){
+		OnChangeState (GameState.IN_GAME);
+	}
+
+	public void Help(){
+		OnChangeState (GameState.HELP);
+	}
+
+	public void Options(){
+		OnChangeState (GameState.OPTIONS);
+	}
+
+	public void End(){
+		OnChangeState (GameState.END);
+	}
+
+	public void Quit(){
+		Application.Quit();
+	}
+}
