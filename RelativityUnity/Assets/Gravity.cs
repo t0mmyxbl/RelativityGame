@@ -7,16 +7,12 @@ public class Gravity : MonoBehaviour {
 
 	public float thrust;
 	public Rigidbody rb;
-    //GameObject obj;
 	bool inverted;
-
 
 	void Start()
 	{
 		inverted = false;
 		rb = GetComponent<Rigidbody>();
-        //obj = GetComponent<GameObject>();
-
 	}
 
 	void FixedUpdate()
@@ -33,10 +29,11 @@ public class Gravity : MonoBehaviour {
         }
         else
         {
-            if (inverted)
-                rb.transform.Translate(0, 0.1f, 0);
-            else
-                rb.transform.Translate(0, -0.1f, 0);
+			if (inverted) {
+				
+			} else {
+				
+			}
         }
 
 
