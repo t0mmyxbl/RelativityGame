@@ -2,5 +2,6 @@
 RelativityUnity/.vs/RelativityUnity/v15/.suo
 *.meta
 *.info
-RelativityUnity/Temp/UnityLockfile
 *.bin
+RelativityUnity/Temp/UnityLockfile
+RelativityUnity/Library/shadercompiler-UnityShaderCompiler.exe0.log
