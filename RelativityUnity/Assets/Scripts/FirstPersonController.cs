@@ -62,26 +62,25 @@ using Random = UnityEngine.Random;
         // Update is called once per frame
         private void Update()
         {
-            RotateView();
-            // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
-            {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
+		if (!g.isChanging) {
+			RotateView ();
+			// the jump state needs to read here to make sure it is not missed
+			if (!m_Jump) {
+				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
+			}
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
-            {
-                StartCoroutine(m_JumpBob.DoBobCycle());
-                PlayLandingSound();
-                m_MoveDir.y = 0f;
-                m_Jumping = false;
-            }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
-            {
-                m_MoveDir.y = 0f;
-            }
+			if (!m_PreviouslyGrounded && m_CharacterController.isGrounded) {
+				StartCoroutine (m_JumpBob.DoBobCycle ());
+				PlayLandingSound ();
+				m_MoveDir.y = 0f;
+				m_Jumping = false;
+			}
+			if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
+				m_MoveDir.y = 0f;
+			}
 
-            m_PreviouslyGrounded = m_CharacterController.isGrounded;
+			m_PreviouslyGrounded = m_CharacterController.isGrounded;
+		}
         }
 
 
@@ -110,7 +109,7 @@ using Random = UnityEngine.Random;
             m_MoveDir.z = desiredMove.z*speed;
 
             
-            if (m_CharacterController.isGrounded || g.gravity > 0)
+		if (m_CharacterController.isGrounded || g.gravity > 0)
             {
                 m_MoveDir.y = g.gravity;
 
@@ -179,7 +178,7 @@ using Random = UnityEngine.Random;
         }
 
 
-        private void UpdateCameraPosition(float speed)
+        private void UpdateCameraPosition(float speed) //////////////////////////////////////////////////////////////////////////////////
         {
             Vector3 newCameraPosition;
             if (!m_UseHeadBob)
@@ -236,8 +235,7 @@ using Random = UnityEngine.Random;
         }
 
 
-        private void RotateView()
-        {
+	private void RotateView(){
 				m_MouseLook.LookRotation (transform, m_Camera.transform);
 
         }

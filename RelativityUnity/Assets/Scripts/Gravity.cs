@@ -11,7 +11,7 @@ public class Gravity : MonoBehaviour {
 
 	void Start()
 	{
-		//inverted = false;
+		
 		rb = GetComponent<Rigidbody>();
 		isChanging = false;
 	}
@@ -25,15 +25,23 @@ public class Gravity : MonoBehaviour {
 
         rb.AddForce(0, gravity*5, 0);
 
+
+
     }
 
 
 
 void ChangeGravity()
 {
-    gravity *= -1;
+		isChanging = true;
+		Cursor.lockState = CursorLockMode.Locked;
 
-	transform.localRotation = Quaternion.Euler(180, 0, 0);
+		gravity *= -1;
+
+		transform.localRotation = Quaternion.Euler(180, 0, 0);
+
+		Cursor.lockState = CursorLockMode.None;
+		isChanging = false;
 }
 
 }
