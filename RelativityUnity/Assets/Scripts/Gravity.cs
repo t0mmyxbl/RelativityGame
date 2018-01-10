@@ -7,11 +7,13 @@ public class Gravity : MonoBehaviour {
 
 	private Rigidbody rb;
     public float gravity = -6;
+	public bool isChanging;
 
 	void Start()
 	{
 		//inverted = false;
 		rb = GetComponent<Rigidbody>();
+		isChanging = false;
 	}
 
 	void FixedUpdate()
@@ -30,6 +32,8 @@ public class Gravity : MonoBehaviour {
 void ChangeGravity()
 {
     gravity *= -1;
+
+	transform.localRotation = Quaternion.Euler(180, 0, 0);
 }
 
 }
