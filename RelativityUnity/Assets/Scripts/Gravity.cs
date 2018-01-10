@@ -32,8 +32,6 @@ public class Gravity : MonoBehaviour {
 void ChangeGravity()
 {
     gravity *= -1;
-
-	transform.localRotation = Quaternion.Euler(180, 0, 0);
 }
 
 }

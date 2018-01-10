@@ -95,6 +95,7 @@
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
+     <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>D:/Thomas Clark/Uni/Year2/PDP/Repository/RelativityGame/RelativityUnity/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
