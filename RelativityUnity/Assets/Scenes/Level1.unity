@@ -306,7 +306,6 @@ MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 14354835}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -318,18 +317,6 @@ MeshCollider:
   m_Mesh: {fileID: 4300000, guid: b0487efd9c06aef42a06edb59e2a578a, type: 3}
 --- !u!1001 &14946115
 Prefab:
-=======
-  m_GameObject: {fileID: 9426255}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 0.1, z: 40}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &9426260
-Rigidbody:
->>>>>>> George
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
@@ -481,7 +468,6 @@ MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 32016978}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -493,37 +479,6 @@ MeshCollider:
   m_Mesh: {fileID: 4300000, guid: 1bcf7cbc46847da4b92443d90f626dfc, type: 3}
 --- !u!1001 &34655048
 Prefab:
-=======
-  m_GameObject: {fileID: 920778848}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1043656151
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1043656156}
-  - component: {fileID: 1043656155}
-  - component: {fileID: 1043656154}
-  - component: {fileID: 1043656153}
-  - component: {fileID: 1043656152}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &1043656152
-AudioListener:
->>>>>>> George
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
@@ -1113,7 +1068,6 @@ MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 61015570}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1194,17 +1148,6 @@ Prefab:
   m_ParentPrefab: {fileID: 100100000, guid: 6256ac3e965c51d4db72db148e24f3ea, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &63653641 stripped
-=======
-  m_GameObject: {fileID: 1324030098}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15.98, z: 0}
-  m_LocalScale: {x: 40, y: 0.1, z: 40}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1388819327
->>>>>>> George
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: b14da93b9124d754e9bb1aaa7b6fa44b, type: 3}
   m_PrefabInternal: {fileID: 1758321486}
@@ -30539,55 +30482,14 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-<<<<<<< HEAD
   m_Convex: 0
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 1bcf7cbc46847da4b92443d90f626dfc, type: 3}
 --- !u!1001 &2122308451
 Prefab:
-=======
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1388819330
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388819327}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1388819331
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388819327}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.34105253, y: 0.61, z: 0.52991104}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1388819332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388819327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 544063ccf2d66b047bf315d30711fa76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: -1
-  isChanging: 0
---- !u!54 &1388819333
-Rigidbody:
->>>>>>> George
   m_ObjectHideFlags: 0
   serializedVersion: 2
-<<<<<<< HEAD
   m_Modification:
     m_TransformParent: {fileID: 431322988}
     m_Modifications:
@@ -30639,17 +30541,6 @@ Rigidbody:
   m_ParentPrefab: {fileID: 100100000, guid: 1bcf7cbc46847da4b92443d90f626dfc, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &2123370586
-=======
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!1001 &2002781552
->>>>>>> George
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -30662,27 +30553,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
       propertyPath: m_LocalPosition.y
-<<<<<<< HEAD
       value: 22.246305
-=======
-      value: 7.05
->>>>>>> George
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
       propertyPath: m_LocalPosition.z
-<<<<<<< HEAD
       value: -8.222275
-=======
-      value: 0.3135395
->>>>>>> George
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
       propertyPath: m_LocalRotation.x
-<<<<<<< HEAD
       value: -0.7071068
-=======
-      value: -0
->>>>>>> George
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
       propertyPath: m_LocalRotation.y
@@ -30698,7 +30577,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 328
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
@@ -30707,23 +30585,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
       propertyPath: m_LocalScale.y
-=======
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_Enabled
->>>>>>> George
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
   m_IsPrefabParent: 0
@@ -30777,60 +30644,10 @@ Prefab:
     - target: {fileID: 400000, guid: 1bcf7cbc46847da4b92443d90f626dfc, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-=======
-    - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_MouseLook.YSensitivity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_MouseLook.XSensitivity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_MouseLook.clampVerticalRotation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114198157280909978, guid: 5e9e851c0e142814dac026a256ba2ac0,
-        type: 2}
-      propertyPath: rotateDegreesPerSecond.space
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114198157280909978, guid: 5e9e851c0e142814dac026a256ba2ac0,
-        type: 2}
-      propertyPath: ignoreTimescale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_MouseLook.MaximumX
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_MouseLook.smooth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114198157280909978, guid: 5e9e851c0e142814dac026a256ba2ac0,
-        type: 2}
-      propertyPath: rotateDegreesPerSecond.value.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114198157280909978, guid: 5e9e851c0e142814dac026a256ba2ac0,
-        type: 2}
-      propertyPath: rotateDegreesPerSecond.value.z
-      value: 90
->>>>>>> George
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bcf7cbc46847da4b92443d90f626dfc, type: 3}
   m_IsPrefabParent: 0
-<<<<<<< HEAD
 --- !u!1001 &2132946891
 Prefab:
   m_ObjectHideFlags: 0
@@ -30907,5 +30724,3 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 9bdca7a79b0232b45ac5d5a33cc51c25, type: 3}
-=======
->>>>>>> George
