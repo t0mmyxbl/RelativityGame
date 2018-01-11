@@ -41,6 +41,8 @@ using Random = UnityEngine.Random;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
         private PlayerGravity g;
+		private HoldObject holdObjectScript;
+
 
         // Use this for initialization
         private void Start()
@@ -56,6 +58,8 @@ using Random = UnityEngine.Random;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             g = GetComponent<PlayerGravity>();
+			holdObjectScript = GetComponentInChildren<HoldObject>();
+			
         }
 
 
@@ -132,7 +136,33 @@ using Random = UnityEngine.Random;
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
+
+		//hold object ////////////////////////////////////////////////////////////
+
+		if (Input.GetKeyDown("f"))
+			GrabObject();
+
+
         }
+
+
+		void GrabObject()
+	{
+		CheckRayCollision ();
+	}
+
+	void CheckRayCollision()
+	{
+		Ray ray = m_Camera.ScreenPointToRay (new Vector3(m_Camera.pixelWidth/2, m_Camera.pixelHeight/2, 0));
+		RaycastHit hit;
+
+		if (Physics.Raycast (ray, out hit, 500000))
+			holdObjectScript.UpdateHeldObject(hit);
+
+	}
+
+
+
 
 
         private void PlayJumpSound()

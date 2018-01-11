@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: 7b38567a974067b4aaf9e9d87bcb9345
+timeCreated: 1515500857
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform1
+    100004: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform10
+    100006: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform11
+    100008: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform12
+    100010: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform13
+    100012: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform14
+    100014: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform15
+    100016: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform16
+    100018: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform17
+    100020: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform18
+    100022: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform19
+    100024: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform2
+    100026: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform20
+    100028: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform21
+    100030: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform22
+    100032: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform23
+    100034: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform24
+    100036: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform25
+    100038: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform26
+    100040: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform27
+    100042: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform28
+    100044: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform29
+    100046: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform3
+    100048: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform30
+    100050: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform31
+    100052: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform4
+    100054: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform5
+    100056: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform6
+    100058: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform7
+    100060: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform8
+    100062: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform9
+    100064: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface011
+    100066: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door_Door_pCube004
+    100068: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door_Door_pCube3
+    100070: Door:Door:Door:Door:Door:Door:Door:Door:Door_Door_Door_Door_Door_Door_Door_Door_Window_Side1_Window_Side1_polySurface3
+    100072: Door:Door:Door:Door:Door:Door:Door:Door:Door_Door_Door_Door_Window_Side1_Window_Side1_polySurface3
+    100074: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface006
+    100076: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface007
+    100078: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface008
+    100080: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface010
+    100082: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface011
+    100084: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface012
+    100086: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface013
+    100088: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface014
+    100090: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface015
+    100092: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface016
+    100094: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface017
+    100096: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface018
+    100098: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface019
+    100100: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface020
+    100102: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface021
+    100104: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface022
+    100106: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface023
+    100108: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface024
+    100110: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface025
+    100112: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface026
+    100114: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface027
+    100116: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface028
+    100118: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface029
+    100120: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface030
+    100122: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface031
+    100124: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface032
+    100126: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface5
+    400000: //RootNode
+    400002: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform1
+    400004: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform10
+    400006: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform11
+    400008: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform12
+    400010: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform13
+    400012: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform14
+    400014: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform15
+    400016: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform16
+    400018: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform17
+    400020: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform18
+    400022: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform19
+    400024: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform2
+    400026: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform20
+    400028: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform21
+    400030: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform22
+    400032: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform23
+    400034: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform24
+    400036: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform25
+    400038: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform26
+    400040: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform27
+    400042: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform28
+    400044: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform29
+    400046: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform3
+    400048: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform30
+    400050: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform31
+    400052: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform4
+    400054: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform5
+    400056: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform6
+    400058: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform7
+    400060: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform8
+    400062: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:transform9
+    400064: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface011
+    400066: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door_Door_pCube004
+    400068: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door_Door_pCube3
+    400070: Door:Door:Door:Door:Door:Door:Door:Door:Door_Door_Door_Door_Door_Door_Door_Door_Window_Side1_Window_Side1_polySurface3
+    400072: Door:Door:Door:Door:Door:Door:Door:Door:Door_Door_Door_Door_Window_Side1_Window_Side1_polySurface3
+    400074: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface006
+    400076: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface007
+    400078: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface008
+    400080: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface010
+    400082: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface011
+    400084: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface012
+    400086: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface013
+    400088: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface014
+    400090: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface015
+    400092: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface016
+    400094: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface017
+    400096: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface018
+    400098: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface019
+    400100: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface020
+    400102: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface021
+    400104: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface022
+    400106: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface023
+    400108: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface024
+    400110: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface025
+    400112: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface026
+    400114: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface027
+    400116: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface028
+    400118: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface029
+    400120: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface030
+    400122: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface031
+    400124: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface032
+    400126: Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface5
+    2300000: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface011
+    3300000: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface011
+    4300000: Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Door:Wall_Panel_polySurface011
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
