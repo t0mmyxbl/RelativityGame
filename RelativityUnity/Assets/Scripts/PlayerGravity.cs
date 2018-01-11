@@ -32,8 +32,6 @@ public class PlayerGravity : MonoBehaviour {
 
 void ChangeGravity()
 {
-
-		//Cursor.lockState = CursorLockMode.Locked;
 		gravity *= -1;
         FPC.m_JumpSpeed *= -1;
 		transform.Rotate(0, 0, 180, Space.Self);
@@ -57,17 +55,22 @@ void ChangeGravity()
 
 		RaycastHit hit;
         
-		if (Physics.Raycast (rayDown, out hit, 3)) {
+		if (Physics.Raycast (rayDown, out hit, 4f)) {
 
-			print ("hitfloor");
+			//print ("hitfloor");
 			onFloor = true;
 			onRoof = false;
-		}
-		if (Physics.Raycast (rayUp, out hit, 3)) {
-            print("hitroof");
+		}else
+		if (Physics.Raycast (rayUp, out hit, 4f)) {
+            //print("hitroof");
             onFloor = false;
 			onRoof = true;
-		}
+        }
+        else
+        {
+            onFloor = false;
+            onRoof = false;
+        }
 		
 	}
 
