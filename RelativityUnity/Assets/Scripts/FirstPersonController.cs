@@ -13,32 +13,32 @@ using Random = UnityEngine.Random;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
-        [SerializeField] private float m_JumpSpeed;
+        [SerializeField] public float m_JumpSpeed;
         //[SerializeField] private float m_StickToGroundForce;
-        [SerializeField] private float m_GravityMultiplier;
+        [SerializeField] public float m_GravityMultiplier;
         [SerializeField] public MouseLook m_MouseLook;
         [SerializeField] private bool m_UseFovKick;
         [SerializeField] private FOVKick m_FovKick = new FOVKick();
         [SerializeField] private bool m_UseHeadBob;
-        [SerializeField] private CurveControlledBob m_HeadBob = new CurveControlledBob();
+        [SerializeField] public CurveControlledBob m_HeadBob = new CurveControlledBob();
         [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
-        [SerializeField] private float m_StepInterval;
+        [SerializeField] public float m_StepInterval;
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
         public Camera m_Camera;
-        private bool m_Jump;
-        private float m_YRotation;
+        public bool m_Jump;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
-        private bool m_PreviouslyGrounded;
+        public bool m_PreviouslyGrounded;
+        public bool m_PreviouslyOnRoof;
         private Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
-        private bool m_Jumping;
+        public bool m_Jumping;
         private AudioSource m_AudioSource;
         private PlayerGravity g;
 
@@ -62,15 +62,14 @@ using Random = UnityEngine.Random;
         // Update is called once per frame
         private void Update()
         {
-		if (g.onFloor ) {
-			//RotateView ();
+			RotateView ();
 
 			// the jump state needs to read here to make sure it is not missed
 			if (!m_Jump) {
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}
 
-			if (!m_PreviouslyGrounded && m_CharacterController.isGrounded) {
+			if ((!m_PreviouslyGrounded && m_CharacterController.isGrounded)) {
 				StartCoroutine (m_JumpBob.DoBobCycle ());
 				PlayLandingSound ();
 				m_MoveDir.y = 0f;
@@ -79,9 +78,13 @@ using Random = UnityEngine.Random;
 			if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
 				m_MoveDir.y = 0f;
 			}
+            if (!g.onRoof && !m_Jumping && m_PreviouslyOnRoof)
+            {
+                m_MoveDir.y = 0f;
+            }
 
-			m_PreviouslyGrounded = m_CharacterController.isGrounded;
-		}
+            m_PreviouslyGrounded = m_CharacterController.isGrounded;
+            m_PreviouslyOnRoof = g.onRoof;
         }
 
 
@@ -89,7 +92,7 @@ using Random = UnityEngine.Random;
         {
             m_AudioSource.clip = m_LandSound;
             m_AudioSource.Play();
-            m_NextStep = m_StepCycle + .5f;
+            m_NextStep = -m_StepCycle + .5f;
         }
 
 
@@ -110,7 +113,7 @@ using Random = UnityEngine.Random;
             m_MoveDir.z = desiredMove.z*speed;
 
             
-		if (m_CharacterController.isGrounded || g.gravity > 0)
+		if (m_CharacterController.isGrounded || g.onRoof)
             {
                 m_MoveDir.y = g.gravity;
 
@@ -125,8 +128,9 @@ using Random = UnityEngine.Random;
             else
             {
                 //Vector3 GravityMatrix = new Vector3(0, g.gravity, 0);
-			m_MoveDir += new Vector3(0, g.gravity, 0)*m_GravityMultiplier*Time.fixedDeltaTime;
+			    m_MoveDir += new Vector3(0, g.gravity, 0)*m_GravityMultiplier*Time.fixedDeltaTime;
             }
+
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
             ProgressStepCycle(speed);
@@ -153,6 +157,7 @@ using Random = UnityEngine.Random;
 
             if (!(m_StepCycle > m_NextStep))
             {
+
                 return;
             }
 
@@ -164,7 +169,7 @@ using Random = UnityEngine.Random;
 
         private void PlayFootStepAudio()
         {
-            if (!m_CharacterController.isGrounded)
+            if (!m_CharacterController.isGrounded && !g.onRoof)
             {
                 return;
             }
@@ -186,7 +191,7 @@ using Random = UnityEngine.Random;
             {
                 return;
             }
-            if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
+            if (m_CharacterController.velocity.magnitude > 0 && (m_CharacterController.isGrounded || g.onRoof))
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
@@ -238,7 +243,6 @@ using Random = UnityEngine.Random;
 
 	private void RotateView(){
 				m_MouseLook.LookRotation (transform, m_Camera.transform);
-
         }
 
 
