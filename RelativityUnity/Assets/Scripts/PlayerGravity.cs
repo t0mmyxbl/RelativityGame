@@ -8,11 +8,13 @@ public class PlayerGravity : MonoBehaviour {
 
 	private Rigidbody rb;
     public float gravity = -6;
-	public bool isChanging = false;
+	//public bool isChanging = false;
 	//public float rotationSpeed = 1;
 	private AutoMoveAndRotate autoMove;
 	private FirstPersonController FPC;
 	private Camera playerCamera;
+	public bool onFloor = true;
+	public bool onRoof = false;
 
 	void Start()
 	{
@@ -26,47 +28,65 @@ public class PlayerGravity : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+
         if (Input.GetKeyDown("g"))
         {
+			onFloor = false;
+			onRoof = false;
            ChangeGravity();
         }
+		detectFloorOrRoof ();
 
-     rb.AddForce(0, gravity*5, 0);
+     //rb.AddForce(0, gravity*5, 0);
 
     }
 
 void ChangeGravity()
 {
-		isChanging = true;
-		Cursor.lockState = CursorLockMode.Locked;
+
+		//Cursor.lockState = CursorLockMode.Locked;
 		gravity *= -1;
+		transform.Rotate(0, 0, 180, Space.Self);
 		StartCoroutine (SpinPlayer ());
 
-		Cursor.lockState = CursorLockMode.None;
-		isChanging = false;
+		//Cursor.lockState = CursorLockMode.None;
 }
 
     IEnumerator SpinPlayer(){
 
-		FPC.enabled = false;
-		autoMove.enabled = true;
+		//FPC.enabled = false;
+		//autoMove.enabled = true;
+
+
 		yield return new WaitForSeconds (2);
-		autoMove.enabled = false;
-        FPC.m_MouseLook.Init(transform, FPC.m_Camera.transform);
+		//autoMove.enabled = false;
+        //FPC.m_MouseLook.Init(transform, FPC.m_Camera.transform);
 
-
-         if (autoMove.rotateDegreesPerSecond.value.z == 90)
-        {
-            autoMove.rotateDegreesPerSecond.value.z = -90;
-        }
-        else if (autoMove.rotateDegreesPerSecond.value.z == -90)
-        {
-            autoMove.rotateDegreesPerSecond.value.z = 90;
-        }
-
-        FPC.m_MouseLook.isRotated = !FPC.m_MouseLook.isRotated;
-        FPC.enabled = true;
+        //FPC.m_MouseLook.isRotated = !FPC.m_MouseLook.isRotated;
+        //FPC.enabled = true;
 
 }
+
+	void detectFloorOrRoof(){
+		Ray rayUp = new Ray(transform.position, transform.up);
+		Ray rayDown = new Ray (transform.position, -transform.up);
+
+		RaycastHit hit;
+
+		if (Physics.Raycast (rayDown, out hit, 5)) {
+
+			print ("hitfloor");
+			//StartCoroutine (waitForSpin ());
+			onFloor = true;
+			onRoof = false;
+		}
+		if (Physics.Raycast (rayUp, out hit, 5)) {
+			print ("hitroof");
+			//StartCoroutine (waitForSpin ());
+			onFloor = false;
+			onRoof = true;
+		}
+			
+	}
 
 }

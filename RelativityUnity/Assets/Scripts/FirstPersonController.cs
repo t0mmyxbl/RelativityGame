@@ -62,8 +62,9 @@ using Random = UnityEngine.Random;
         // Update is called once per frame
         private void Update()
         {
-		if (!g.isChanging) {
-			RotateView ();
+		if (g.onFloor ) {
+			//RotateView ();
+
 			// the jump state needs to read here to make sure it is not missed
 			if (!m_Jump) {
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
@@ -124,7 +125,7 @@ using Random = UnityEngine.Random;
             else
             {
                 //Vector3 GravityMatrix = new Vector3(0, g.gravity, 0);
-                m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
+			m_MoveDir += new Vector3(0, g.gravity, 0)*m_GravityMultiplier*Time.fixedDeltaTime;
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
@@ -256,4 +257,5 @@ using Random = UnityEngine.Random;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+		
     }
