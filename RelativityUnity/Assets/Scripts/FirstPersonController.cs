@@ -16,7 +16,7 @@ using Random = UnityEngine.Random;
         [SerializeField] private float m_JumpSpeed;
         //[SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
-        [SerializeField] private MouseLook m_MouseLook;
+        [SerializeField] public MouseLook m_MouseLook;
         [SerializeField] private bool m_UseFovKick;
         [SerializeField] private FOVKick m_FovKick = new FOVKick();
         [SerializeField] private bool m_UseHeadBob;
@@ -27,7 +27,7 @@ using Random = UnityEngine.Random;
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        private Camera m_Camera;
+        public Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
@@ -40,7 +40,7 @@ using Random = UnityEngine.Random;
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-        private Gravity g;
+        private PlayerGravity g;
 
         // Use this for initialization
         private void Start()
@@ -55,33 +55,32 @@ using Random = UnityEngine.Random;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
-            g = GetComponent<Gravity>();
+            g = GetComponent<PlayerGravity>();
         }
 
 
         // Update is called once per frame
         private void Update()
         {
-            RotateView();
-            // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
-            {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
+		if (!g.isChanging) {
+			RotateView ();
+			// the jump state needs to read here to make sure it is not missed
+			if (!m_Jump) {
+				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
+			}
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
-            {
-                StartCoroutine(m_JumpBob.DoBobCycle());
-                PlayLandingSound();
-                m_MoveDir.y = 0f;
-                m_Jumping = false;
-            }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
-            {
-                m_MoveDir.y = 0f;
-            }
+			if (!m_PreviouslyGrounded && m_CharacterController.isGrounded) {
+				StartCoroutine (m_JumpBob.DoBobCycle ());
+				PlayLandingSound ();
+				m_MoveDir.y = 0f;
+				m_Jumping = false;
+			}
+			if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
+				m_MoveDir.y = 0f;
+			}
 
-            m_PreviouslyGrounded = m_CharacterController.isGrounded;
+			m_PreviouslyGrounded = m_CharacterController.isGrounded;
+		}
         }
 
 
@@ -110,7 +109,7 @@ using Random = UnityEngine.Random;
             m_MoveDir.z = desiredMove.z*speed;
 
             
-            if (m_CharacterController.isGrounded || g.gravity > 0)
+		if (m_CharacterController.isGrounded || g.gravity > 0)
             {
                 m_MoveDir.y = g.gravity;
 
@@ -179,7 +178,7 @@ using Random = UnityEngine.Random;
         }
 
 
-        private void UpdateCameraPosition(float speed)
+        private void UpdateCameraPosition(float speed) //////////////////////////////////////////////////////////////////////////////////
         {
             Vector3 newCameraPosition;
             if (!m_UseHeadBob)
@@ -236,8 +235,7 @@ using Random = UnityEngine.Random;
         }
 
 
-        private void RotateView()
-        {
+	private void RotateView(){
 				m_MouseLook.LookRotation (transform, m_Camera.transform);
 
         }
