@@ -51,24 +51,17 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HeadBob.cs" />
      <Compile Include="Assets\Scripts\MouseLook.cs" />
-<<<<<<< HEAD
-     <Compile Include="Assets\Scripts\OxygenLevels.cs" />
-=======
      <Compile Include="Assets\Scripts\ObjectGravity.cs" />
+     <Compile Include="Assets\Scripts\OxygenLevels.cs" />
      <Compile Include="Assets\Scripts\PlayerGravity.cs" />
->>>>>>> George
      <Compile Include="Assets\Scripts\RigidbodyFirstPersonController.cs" />
+     <Compile Include="Assets\Stagit\SkyboxEarthPlanets\script\skyboxspace_demo_v1.cs" />
+     <Compile Include="Assets\Stagit\SkyboxEarthPlanets\script\skyboxspace_mouselook_v1.cs" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+     <None Include="Assets\Stagit\SkyboxEarthPlanets\readme.txt" />
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
-<<<<<<< HEAD
-     <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />
- <Reference Include="Facebook.Unity.Settings">
- <HintPath>D:/Thomas Clark/Uni/Year2/PDP/Repository/RelativityGame/RelativityUnity/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
- </Reference>
-=======
->>>>>>> George
  <Reference Include="UnityEngine.UI">
  <HintPath>T:/Program Files/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
