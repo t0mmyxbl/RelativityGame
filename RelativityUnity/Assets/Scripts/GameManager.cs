@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-	enum GameState { START, MAIN, OPTIONS, HELP, IN_GAME, END};
+	enum GameState { START, MAIN, OPTIONS, IN_GAME, END};
 	private GameState gameState;
 
 	[SerializeField] private GameState startState = GameState.START;
 	[SerializeField] private GameObject MainMenu;
 	[SerializeField] private GameObject OptionsMenu;
-	[SerializeField] private GameObject HelpMenu;
 
 	static private GameManager instance = null;
 
@@ -56,18 +55,7 @@ public class GameManager : MonoBehaviour {
 				Cursor.visible = true;
 
 				MainMenu.SetActive (false);
-				HelpMenu.SetActive (false);
 				OptionsMenu.SetActive(true);
-
-				break;
-			case GameState.HELP:
-				Time.timeScale = 0;
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
-
-				HelpMenu.SetActive(true);
-				MainMenu.SetActive (false);
-				OptionsMenu.SetActive(false);
 
 				break;
 			case GameState.IN_GAME:
@@ -82,7 +70,6 @@ public class GameManager : MonoBehaviour {
 				Cursor.visible = true;
 
 				MainMenu.SetActive(true);
-				HelpMenu.SetActive (false);
 				OptionsMenu.SetActive(false);
 
 				break;
@@ -103,11 +90,6 @@ public class GameManager : MonoBehaviour {
 
 	public void PlayGame(){
 		OnChangeState (GameState.IN_GAME);
-	}
-
-	public void Help(){
-		
-		OnChangeState (GameState.HELP);
 	}
 
 	public void Options(){
