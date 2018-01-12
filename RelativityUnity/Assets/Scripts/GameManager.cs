@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
 				break;
 			case GameState.IN_GAME:
 				Time.timeScale = 1;
-				SceneManager.LoadScene ("Level1");
+				SceneManager.LoadScene ("Game");
 				break;
 			case GameState.END:
 				break;
