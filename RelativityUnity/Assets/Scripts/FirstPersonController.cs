@@ -43,6 +43,7 @@ using Random = UnityEngine.Random;
         private PlayerGravity g;
         private HoldObject holdObjectScript;
         private OxygenLevels oxygenScript;
+        private GameObject objectInteract;
 
     // Use this for initialization
     private void Start()
@@ -158,18 +159,28 @@ using Random = UnityEngine.Random;
     void CheckRayCollision()
     {
         Ray ray = m_Camera.ScreenPointToRay(new Vector3(m_Camera.pixelWidth / 2, m_Camera.pixelHeight / 2, 0));
+
+        int layerMask = 1 << 8;
+        layerMask = ~layerMask;
+
+
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 500000))
+        if (Physics.Raycast(ray, out hit, 500, layerMask))
         {
-            if (hit.transform.gameObject.GetComponent<Holdable>().canHold == true)
+            objectInteract = hit.transform.gameObject;
+            print(objectInteract);
+            if (objectInteract.GetComponent<Holdable>().canHold == true)
             {
-                holdObjectScript.UpdateHeldObject(hit);
+                holdObjectScript.UpdateHeldObject(objectInteract);
             }
-
-            if ((hit.collider.gameObject.name == "Oxygen Tank"))
+            if ((objectInteract.name == "Oxygen Tank"))
             {
                 oxygenScript.fillOxygen();
+            }
+            if ((objectInteract.name == "Door"))
+            {
+                objectInteract.GetComponent<Animator>().SetTrigger("OpenDoor");
             }
         }
 

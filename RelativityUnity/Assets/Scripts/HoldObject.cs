@@ -6,7 +6,7 @@ public class HoldObject : MonoBehaviour {
 
 
 	public Transform holdPosition;
-	private Transform lastHitObject, newHitObject;
+	private GameObject lastHitObject, newHitObject;
 	private Camera camera_;
 	private Collider objectCollider;
 	private RaycastHit hit;
@@ -18,9 +18,9 @@ public class HoldObject : MonoBehaviour {
 	
 	}
 
-	public void UpdateHeldObject(RaycastHit hit)
+	public void UpdateHeldObject(GameObject gObject)
 	{
-		newHitObject = hit.transform;
+		newHitObject = gObject;
 		
 		CheckForAlreadyHeld (newHitObject);
 
@@ -28,13 +28,13 @@ public class HoldObject : MonoBehaviour {
 		
 	}
 
-void CheckForAlreadyHeld(Transform newHitObject)
+void CheckForAlreadyHeld(GameObject newHitObject)
 {
 		
 
 		if (lastHitObject != newHitObject) {
-			holdPosition.position = newHitObject.position;
-			holdPosition.rotation = newHitObject.rotation;
+			holdPosition.position = newHitObject.transform.position;
+			holdPosition.rotation = newHitObject.transform.rotation;
 			//newHitObject.gameObject.GetComponent<Collider> ().enabled = false;
 			lastHitObject = newHitObject;
 
@@ -54,8 +54,8 @@ void CheckForAlreadyHeld(Transform newHitObject)
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (lastHitObject != null) {
-			newHitObject.position = holdPosition.position;
-			newHitObject.rotation = holdPosition.rotation;
+			newHitObject.transform.position = holdPosition.position;
+			newHitObject.transform.rotation = holdPosition.rotation;
 
 		}
 
