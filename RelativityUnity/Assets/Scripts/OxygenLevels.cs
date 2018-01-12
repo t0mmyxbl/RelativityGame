@@ -17,4 +17,9 @@ public class OxygenLevels : MonoBehaviour {
 	void Update () {
 		oxygenSlider.value -= Time.deltaTime / 10;
 	}
+
+    public void fillOxygen()
+    {
+        oxygenSlider.value = 100;
+    }
 }

@@ -41,9 +41,11 @@ using Random = UnityEngine.Random;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
         private PlayerGravity g;
+        private HoldObject holdObjectScript;
+        private OxygenLevels oxygenScript;
 
-        // Use this for initialization
-        private void Start()
+    // Use this for initialization
+    private void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
@@ -56,7 +58,9 @@ using Random = UnityEngine.Random;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             g = GetComponent<PlayerGravity>();
-        }
+            holdObjectScript = GetComponentInChildren<HoldObject>();
+            oxygenScript = GetComponent<OxygenLevels>();
+    }
 
 
         // Update is called once per frame
@@ -69,7 +73,7 @@ using Random = UnityEngine.Random;
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}
 
-			if ((!m_PreviouslyGrounded && m_CharacterController.isGrounded)) {
+            if ((!m_PreviouslyGrounded && m_CharacterController.isGrounded)) {
 				StartCoroutine (m_JumpBob.DoBobCycle ());
 				PlayLandingSound ();
 				m_MoveDir.y = 0f;
@@ -124,6 +128,7 @@ using Random = UnityEngine.Random;
                     m_Jump = false;
                     m_Jumping = true;
                 }
+
             }
             else
             {
@@ -137,10 +142,41 @@ using Random = UnityEngine.Random;
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
+
+        //hold object ////////////////////////////////////////////////////////////
+
+        if (Input.GetKeyDown("f"))
+            GrabObject();
         }
 
 
-        private void PlayJumpSound()
+    void GrabObject()
+    {
+        CheckRayCollision();
+    }
+
+    void CheckRayCollision()
+    {
+        Ray ray = m_Camera.ScreenPointToRay(new Vector3(m_Camera.pixelWidth / 2, m_Camera.pixelHeight / 2, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 500000))
+        {
+            if (hit.transform.gameObject.GetComponent<Holdable>().canHold == true)
+            {
+                holdObjectScript.UpdateHeldObject(hit);
+            }
+
+            if ((hit.collider.gameObject.name == "Oxygen Tank"))
+            {
+                oxygenScript.fillOxygen();
+            }
+        }
+
+
+    }
+
+    private void PlayJumpSound()
         {
             m_AudioSource.clip = m_JumpSound;
             m_AudioSource.Play();
