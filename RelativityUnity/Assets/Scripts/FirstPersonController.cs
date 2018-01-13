@@ -180,7 +180,7 @@ using Random = UnityEngine.Random;
             }
             if ((objectInteract.name == "Door"))
             {
-                objectInteract.GetComponent<Animator>().SetTrigger("OpenDoor");
+                objectInteract.GetComponent<Animator>().Play("Open Door", 1, 0);
             }
         }
 
