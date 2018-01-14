@@ -4,8 +4,9 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityStandardAssets.Characters.FirstPerson;
 using Random = UnityEngine.Random;
+using System.Collections;
 
-    [RequireComponent(typeof (CharacterController))]
+[RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
@@ -169,7 +170,6 @@ using Random = UnityEngine.Random;
         if (Physics.Raycast(ray, out hit, 500, layerMask))
         {
             objectInteract = hit.transform.gameObject;
-            print(objectInteract);
             if (objectInteract.GetComponent<Holdable>().canHold == true)
             {
                 holdObjectScript.UpdateHeldObject(objectInteract);
@@ -180,10 +180,21 @@ using Random = UnityEngine.Random;
             }
             if ((objectInteract.name == "Door"))
             {
-                objectInteract.GetComponent<Animator>().Play("Open Door", 1, 0);
+                Animator animController = objectInteract.GetComponent<Animator>();
+                animController.Play("OpenDoor");
+                StartCoroutine(wait(animController));
+
             }
         }
 
+
+    }
+
+    IEnumerator wait(Animator animController)
+    {
+        yield return new WaitForSeconds(10);
+        animController.Play("CloseDoor");
+        print("closed");
 
     }
 
