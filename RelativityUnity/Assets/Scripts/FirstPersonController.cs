@@ -170,6 +170,7 @@ using System.Collections;
         if (Physics.Raycast(ray, out hit, 500, layerMask))
         {
             objectInteract = hit.transform.gameObject;
+            print(objectInteract);
             if (objectInteract.GetComponent<Holdable>().canHold == true)
             {
                 holdObjectScript.UpdateHeldObject(objectInteract);
