@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\AutoMoveAndRotate.cs" />
      <Compile Include="Assets\Scripts\FirstPersonController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\GameTimer.cs" />
      <Compile Include="Assets\Scripts\HeadBob.cs" />
      <Compile Include="Assets\Scripts\Holdable.cs" />
      <Compile Include="Assets\Scripts\HoldObject.cs" />

@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private GameState startState = GameState.START;
 	[SerializeField] private GameObject MainMenu;
 	[SerializeField] private GameObject OptionsMenu;
+    [SerializeField] private GameObject PauseMenu;
 
-	static private GameManager instance = null;
+    static private GameManager instance = null;
 
 	public static GameManager Instance
 	{
@@ -36,6 +37,15 @@ public class GameManager : MonoBehaviour {
 		gameState = startState;
 	}
 
+    void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            PauseMenu.SetActive(true);
+        }
+    }
+
 	void OnChangeState (GameState newState) {
 		if (gameState != newState) {
 
@@ -54,6 +64,7 @@ public class GameManager : MonoBehaviour {
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
 
+                PauseMenu.SetActive(false);
 				MainMenu.SetActive (false);
 				OptionsMenu.SetActive(true);
 
@@ -95,6 +106,11 @@ public class GameManager : MonoBehaviour {
 	public void Options(){
 		OnChangeState (GameState.OPTIONS);
 	}
+
+    public void Resume(){
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
 
 	public void End(){
 		OnChangeState (GameState.END);

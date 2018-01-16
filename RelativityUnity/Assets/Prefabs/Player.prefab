@@ -115,14 +115,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1283702116151382}
-  m_LocalRotation: {x: -0, y: -0.13260211, z: 0, w: -0.9911694}
-  m_LocalPosition: {x: -3.03, y: 19.66, z: -57.97}
+  m_LocalRotation: {x: -0, y: 0.55951625, z: -0, w: -0.82881945}
+  m_LocalPosition: {x: -6.8000145, y: 19.66, z: -55.87}
   m_LocalScale: {x: 2, y: 3, z: 2}
   m_Children:
   - {fileID: 4998649072405506}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 375.24, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 291.955, z: 0}
 --- !u!4 &4998649072405506
 Transform:
   m_ObjectHideFlags: 1
@@ -353,8 +353,8 @@ MonoBehaviour:
     XSensitivity: 2
     YSensitivity: 2
     clampVerticalRotation: 1
-    MinimumX: -70
-    MaximumX: 70
+    MinimumX: -90
+    MaximumX: 90
     smooth: 1
     smoothTime: 50
     lockCursor: 1
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_WalkSpeed: 5
   m_RunSpeed: 10
   m_RunstepLenghten: 0.7
-  m_GravityMultiplier: 5
+  m_GravityMultiplier: 4
   m_UseFovKick: 1
   m_FovKick:
     Camera: {fileID: 0}
@@ -435,7 +435,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     VerticaltoHorizontalRatio: 2
   m_JumpBob:
-    BobDuration: 0.2
+    BobDuration: 0.1
     BobAmount: 0.1
   m_StepInterval: 5
   m_FootstepSounds:
@@ -455,8 +455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -6
-  onFloor: 1
-  onRoof: 0
 --- !u!124 &124562725889065750
 Behaviour:
   m_ObjectHideFlags: 1

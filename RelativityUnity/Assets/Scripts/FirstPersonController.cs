@@ -45,6 +45,7 @@ using System.Collections;
         private HoldObject holdObjectScript;
         private OxygenLevels oxygenScript;
         private GameObject objectInteract;
+        private bool isOnRoof;
 
     // Use this for initialization
     private void Start()
@@ -68,6 +69,11 @@ using System.Collections;
         // Update is called once per frame
         private void Update()
         {
+        if ((m_CharacterController.collisionFlags & CollisionFlags.Above) != 0)
+            isOnRoof = true;
+        else
+            isOnRoof = false;
+
 			RotateView ();
 
 			// the jump state needs to read here to make sure it is not missed
@@ -75,7 +81,7 @@ using System.Collections;
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}
 
-            if ((!m_PreviouslyGrounded && m_CharacterController.isGrounded)) {
+            if ((!m_PreviouslyGrounded && m_CharacterController.isGrounded) || (!m_PreviouslyOnRoof && isOnRoof)) {
 				StartCoroutine (m_JumpBob.DoBobCycle ());
 				PlayLandingSound ();
 				m_MoveDir.y = 0f;
@@ -84,13 +90,13 @@ using System.Collections;
 			if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
 				m_MoveDir.y = 0f;
 			}
-            if (!g.onRoof && !m_Jumping && m_PreviouslyOnRoof)
+            if (!isOnRoof && !m_Jumping && m_PreviouslyOnRoof)
             {
                 m_MoveDir.y = 0f;
-            }
+        }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-            m_PreviouslyOnRoof = g.onRoof;
+            m_PreviouslyOnRoof = isOnRoof;
         }
 
 
@@ -117,9 +123,8 @@ using System.Collections;
 
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
-
-            
-		if (m_CharacterController.isGrounded || g.onRoof)
+           
+		if (m_CharacterController.isGrounded || isOnRoof)
             {
                 m_MoveDir.y = g.gravity;
 
@@ -134,8 +139,7 @@ using System.Collections;
             }
             else
             {
-                //Vector3 GravityMatrix = new Vector3(0, g.gravity, 0);
-			    m_MoveDir += new Vector3(0, g.gravity, 0)*m_GravityMultiplier*Time.fixedDeltaTime;
+			        m_MoveDir += new Vector3(0, g.gravity, 0)*m_GravityMultiplier*Time.fixedDeltaTime;
             }
 
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
@@ -147,7 +151,7 @@ using System.Collections;
 
         //hold object ////////////////////////////////////////////////////////////
 
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown(KeyCode.F))
             GrabObject();
         }
 
@@ -170,20 +174,20 @@ using System.Collections;
         if (Physics.Raycast(ray, out hit, 500, layerMask))
         {
             objectInteract = hit.transform.gameObject;
-            //print(objectInteract);
+
             if (objectInteract.GetComponent<Holdable>().canHold == true)
             {
                 holdObjectScript.UpdateHeldObject(objectInteract);
             }
-            if ((objectInteract.name == "Oxygen Tank"))
+            if ((objectInteract.tag == "Oxygen"))
             {
                 oxygenScript.fillOxygen();
             }
-            if ((objectInteract.name == "Door"))
+            if ((objectInteract.tag == "Door"))
             {
                 Animator animController = objectInteract.GetComponent<Animator>();
                 animController.Play("OpenDoor");
-                StartCoroutine(wait(animController));
+                StartCoroutine(Wait(animController));
 
             }
         }
@@ -191,12 +195,10 @@ using System.Collections;
 
     }
 
-    IEnumerator wait(Animator animController)
+    IEnumerator Wait(Animator animController)
     {
         yield return new WaitForSeconds(10);
         animController.Play("CloseDoor");
-        print("closed");
-
     }
 
     private void PlayJumpSound()
@@ -228,7 +230,7 @@ using System.Collections;
 
         private void PlayFootStepAudio()
         {
-            if (!m_CharacterController.isGrounded && !g.onRoof)
+            if (!m_CharacterController.isGrounded && !isOnRoof)
             {
                 return;
             }
@@ -247,10 +249,10 @@ using System.Collections;
         {
             Vector3 newCameraPosition;
             if (!m_UseHeadBob)
-            {
+            {        
                 return;
             }
-            if (m_CharacterController.velocity.magnitude > 0 && (m_CharacterController.isGrounded || g.onRoof))
+            if (m_CharacterController.velocity.magnitude > 0 && (m_CharacterController.isGrounded || isOnRoof))
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
@@ -264,6 +266,7 @@ using System.Collections;
                 newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
             }
             m_Camera.transform.localPosition = newCameraPosition;
+
         }
 
 
