@@ -11387,17 +11387,58 @@ Prefab:
     - target: {fileID: 224745306833841936, guid: afa597b9aa3ae5c4ab4df6a60e998675,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224745306833841936, guid: afa597b9aa3ae5c4ab4df6a60e998675,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224745306833841936, guid: afa597b9aa3ae5c4ab4df6a60e998675,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 1.1999512
+      value: 4.369
+      objectReference: {fileID: 0}
+    - target: {fileID: 114179867502645262, guid: afa597b9aa3ae5c4ab4df6a60e998675,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 78aa295d3003827409e3c32616110b9d,
+        type: 3}
+    - target: {fileID: 224750225212152024, guid: afa597b9aa3ae5c4ab4df6a60e998675,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -498
+      objectReference: {fileID: 0}
+    - target: {fileID: 224750225212152024, guid: afa597b9aa3ae5c4ab4df6a60e998675,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -960.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224750225212152024, guid: afa597b9aa3ae5c4ab4df6a60e998675,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224750225212152024, guid: afa597b9aa3ae5c4ab4df6a60e998675,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -1354.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224745306833841936, guid: afa597b9aa3ae5c4ab4df6a60e998675,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 26.067
+      objectReference: {fileID: 0}
+    - target: {fileID: 224745306833841936, guid: afa597b9aa3ae5c4ab4df6a60e998675,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -74.353
+      objectReference: {fileID: 0}
+    - target: {fileID: 224745306833841936, guid: afa597b9aa3ae5c4ab4df6a60e998675,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -24.559
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afa597b9aa3ae5c4ab4df6a60e998675, type: 2}
