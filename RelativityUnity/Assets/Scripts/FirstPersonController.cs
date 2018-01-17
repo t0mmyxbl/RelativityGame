@@ -33,7 +33,7 @@ using System.Collections;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
-        private CollisionFlags m_CollisionFlags;
+        [SerializeField]private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
         private bool m_PreviouslyOnRoof;
         private Vector3 m_OriginalCameraPosition;
@@ -69,6 +69,7 @@ using System.Collections;
         // Update is called once per frame
         private void Update()
         {
+        //print(m_CharacterController.velocity.magnitude);
         if ((m_CharacterController.collisionFlags & CollisionFlags.Above) != 0)
             isOnRoof = true;
         else
@@ -128,7 +129,7 @@ using System.Collections;
             {
                 m_MoveDir.y = g.gravity;
 
-                if (m_Jump)
+            if (m_Jump)
                 {
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
@@ -143,7 +144,7 @@ using System.Collections;
             }
 
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
-
+        print(m_CollisionFlags);
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
 
@@ -210,6 +211,7 @@ using System.Collections;
 
         private void ProgressStepCycle(float speed)
         {
+        //print(m_CharacterController.velocity.sqrMagnitude);
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
                 m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*
@@ -310,17 +312,18 @@ using System.Collections;
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            Rigidbody body = hit.collider.attachedRigidbody;
+        Rigidbody body = hit.collider.attachedRigidbody;
             //dont move the rigidbody if the character is on top of it
-            if (m_CollisionFlags == CollisionFlags.Below)
+            if ((m_CollisionFlags == CollisionFlags.Below) || (m_CollisionFlags == CollisionFlags.Above))
             {
                 return;
             }
-
+        //print(body);
             if (body == null || body.isKinematic)
             {
                 return;
             }
+
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
 		

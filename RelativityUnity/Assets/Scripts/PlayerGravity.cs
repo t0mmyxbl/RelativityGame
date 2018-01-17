@@ -16,8 +16,7 @@ public class PlayerGravity : MonoBehaviour {
 	}
 
 	void FixedUpdate()
-	{
-
+    {
         if (Input.GetKeyDown("g"))
         {
            ChangeGravity();

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectGravity : MonoBehaviour {
 
     private Rigidbody rb;
-    private float gravity = -6;
+    private float gravity = -9.81f;
 
     // Use this for initialization
     void Start () {
