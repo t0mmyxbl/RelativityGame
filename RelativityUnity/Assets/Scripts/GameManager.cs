@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-	enum GameState { START, MAIN, OPTIONS, IN_GAME, END};
+	enum GameState { START, MAIN, OPTIONS, IN_GAME, PAUSED, END};
 	private GameState gameState;
 
 	[SerializeField] private GameState startState = GameState.START;
+	[SerializeField] private GameObject UserInterface;
 	[SerializeField] private GameObject MainMenu;
 	[SerializeField] private GameObject OptionsMenu;
     [SerializeField] private GameObject PauseMenu;
@@ -41,8 +42,7 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0;
-            PauseMenu.SetActive(true);
+			OnChangeState (GameState.PAUSED);
         }
     }
 
@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour {
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
 
+				StartCoroutine (WaitForEndOfFrame ());
+
 				break;
 			case GameState.OPTIONS:
 				Time.timeScale = 0;
@@ -68,12 +70,28 @@ public class GameManager : MonoBehaviour {
 				MainMenu.SetActive (false);
 				OptionsMenu.SetActive(true);
 
+				StartCoroutine (WaitForEndOfFrame ());
+
 				break;
 			case GameState.IN_GAME:
 				Time.timeScale = 1;
 				SceneManager.LoadScene ("Game");
+
+				StartCoroutine (WaitForEndOfFrame ());
+				break;
+			case GameState.PAUSED:
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+
+				Time.timeScale = 0;
+
+				Transform pauseMenuInstance = Instantiate (PauseMenu).transform;
+				pauseMenuInstance.SetParent (UserInterface.transform, false);
+				StartCoroutine (WaitForEndOfFrame ());
 				break;
 			case GameState.END:
+
+				StartCoroutine (WaitForEndOfFrame ());
 				break;
 			case GameState.MAIN:
 				Time.timeScale = 0;
@@ -82,6 +100,8 @@ public class GameManager : MonoBehaviour {
 
 				MainMenu.SetActive(true);
 				OptionsMenu.SetActive(false);
+
+				StartCoroutine (WaitForEndOfFrame ());
 
 				break;
 			}
@@ -93,6 +113,11 @@ public class GameManager : MonoBehaviour {
 	private void EnableInput(bool input){
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		player.GetComponent<FirstPersonController> ().enabled = input;
+	}
+
+	IEnumerator WaitForEndOfFrame(){
+
+		yield return new WaitForEndOfFrame ();
 	}
 
 	public void Menu(){
