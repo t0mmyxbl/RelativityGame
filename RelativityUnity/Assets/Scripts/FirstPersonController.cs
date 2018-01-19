@@ -33,7 +33,7 @@ using System.Collections;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
-        [SerializeField]private CollisionFlags m_CollisionFlags;
+        private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
         private bool m_PreviouslyOnRoof;
         private Vector3 m_OriginalCameraPosition;
@@ -69,7 +69,6 @@ using System.Collections;
         // Update is called once per frame
         private void Update()
         {
-        //print(m_CharacterController.velocity.magnitude);
         if ((m_CharacterController.collisionFlags & CollisionFlags.Above) != 0)
             isOnRoof = true;
         else
@@ -144,7 +143,7 @@ using System.Collections;
             }
 
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
-        print(m_CollisionFlags);
+
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
 
@@ -198,7 +197,7 @@ using System.Collections;
 
     IEnumerator Wait(Animator animController)
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         animController.Play("CloseDoor");
     }
 
@@ -211,7 +210,8 @@ using System.Collections;
 
         private void ProgressStepCycle(float speed)
         {
-        //print(m_CharacterController.velocity.sqrMagnitude);
+        print(m_CharacterController.velocity);
+
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
                 m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*

@@ -26,6 +26,7 @@ public class PlayerGravity : MonoBehaviour {
 
     void ChangeGravity()
     {
+            Physics.gravity *= -1;
     		gravity *= -1;
             FPC.m_JumpSpeed *= -1;
     		transform.Rotate(0, 0, 180, Space.Self);
