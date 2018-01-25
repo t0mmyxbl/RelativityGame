@@ -17,6 +17,16 @@ public class PlayerGravity : MonoBehaviour {
 
 	void FixedUpdate()
     {
+
+        if (gravity < 0)
+        {
+            FPC.setdirection(Vector3.down);
+        }
+        else
+            if (gravity > 0)
+            {
+            FPC.setdirection(Vector3.up);
+            }
         if (Input.GetKeyDown("g"))
         {
            ChangeGravity();
@@ -27,6 +37,8 @@ public class PlayerGravity : MonoBehaviour {
     void ChangeGravity()
     {
             Physics.gravity *= -1;
+
+
     		gravity *= -1;
             FPC.m_JumpSpeed *= -1;
     		transform.Rotate(0, 0, 180, Space.Self);

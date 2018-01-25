@@ -28,7 +28,7 @@ using System.Collections;
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
-
+        private Vector3 direction;
         private bool m_Jump;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
@@ -74,27 +74,35 @@ using System.Collections;
         // Update is called once per frame
         private void Update()
         {
+
+        //set the character to be on the roof
         if ((m_CharacterController.collisionFlags & CollisionFlags.Above) != 0)
             isOnRoof = true;
         else
             isOnRoof = false;
 
+        //rotate view used for mouse input
 			RotateView ();
 
 			// the jump state needs to read here to make sure it is not missed
+            //if the player isnt jumping and the player presses the jump button, set jump to true
 			if (!m_Jump) {
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}
 
+            //if the player was not grounded or on roof last frame but is in the current frame../
             if ((!m_PreviouslyGrounded && m_CharacterController.isGrounded) || (!m_PreviouslyOnRoof && isOnRoof)) {
+                //start the jump bob cycle, play the landing sound, set the vertical movement to 0 and set it so the player isnt jumping
 				StartCoroutine (m_JumpBob.DoBobCycle ());
 				PlayLandingSound ();
 				m_MoveDir.y = 0f;
 				m_Jumping = false;
 			}
+            //if the character is not on the ground and is not jumping but was previously grounded, set the vertical movement to 0
 			if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
 				m_MoveDir.y = 0f;
 			}
+            //same as above but for on roof
             if (!isOnRoof && !m_Jumping && m_PreviouslyOnRoof)
             {
                 m_MoveDir.y = 0f;
@@ -122,9 +130,21 @@ using System.Collections;
 
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
-            Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-                               m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
-            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+        //Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
+        //                   m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+
+
+        Vector3 p1 = transform.position + m_CharacterController.center + Vector3.up * -m_CharacterController.height * 0.5F;
+        Vector3 p2 = p1 + Vector3.up * m_CharacterController.height;
+        float distanceToObstacle = 0;
+
+        // Cast character controller shape 10 meters forward to see if it is about to hit anything.
+        if (Physics.CapsuleCast(p1, p2, m_CharacterController.radius, direction, out hitInfo, 2, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            distanceToObstacle = hitInfo.distance;
+
+        print(distanceToObstacle);
+
+        desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
@@ -352,5 +372,10 @@ using System.Collections;
             gameOver = end;
             playerDied = died;
         }
+
+        public void setdirection(Vector3 d)
+    {
+        direction = d;
+    }
 		
     }
