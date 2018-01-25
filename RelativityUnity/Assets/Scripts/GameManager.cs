@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	enum GameState { START, MAIN, OPTIONS, IN_GAME, PAUSED, END};
-	private GameState gameState;
+	[SerializeField]private GameState gameState;
 
 	[SerializeField] private GameState startState = GameState.START;
-	[SerializeField] private GameObject UserInterface;
 	[SerializeField] private GameObject MainMenu;
+    [SerializeField] private GameObject MainOptionsMenu;
 	[SerializeField] private GameObject OptionsMenu;
     [SerializeField] private GameObject PauseMenu;
 
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
 	void OnChangeState (GameState newState) {
 		if (gameState != newState) {
 
-			switch (newState) 
+            switch (newState) 
 			{
 			case GameState.START:
 				Time.timeScale = 0;
@@ -66,27 +66,29 @@ public class GameManager : MonoBehaviour {
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
 
-                PauseMenu.SetActive(false);
-				MainMenu.SetActive (false);
-				OptionsMenu.SetActive(true);
+                MainOptionsMenu.SetActive(true);
+                MainMenu.SetActive(false);
+                
 
 				StartCoroutine (WaitForEndOfFrame ());
 
 				break;
 			case GameState.IN_GAME:
 				Time.timeScale = 1;
-				SceneManager.LoadScene ("Game");
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = false;
+
+                PauseMenu.SetActive(false);
 
 				StartCoroutine (WaitForEndOfFrame ());
 				break;
 			case GameState.PAUSED:
-				Cursor.lockState = CursorLockMode.None;
+				Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
 
-				Time.timeScale = 0;
+                PauseMenu.SetActive(true);
 
-				Transform pauseMenuInstance = Instantiate (PauseMenu).transform;
-				pauseMenuInstance.SetParent (UserInterface.transform, false);
 				StartCoroutine (WaitForEndOfFrame ());
 				break;
 			case GameState.END:
@@ -98,8 +100,8 @@ public class GameManager : MonoBehaviour {
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
 
-				MainMenu.SetActive(true);
-				OptionsMenu.SetActive(false);
+                MainMenu.SetActive(true);
+                MainOptionsMenu.SetActive(false);
 
 				StartCoroutine (WaitForEndOfFrame ());
 
@@ -125,7 +127,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void PlayGame(){
-		OnChangeState (GameState.IN_GAME);
+        SceneManager.LoadScene("Game");
+        OnChangeState (GameState.IN_GAME);
 	}
 
 	public void Options(){
@@ -133,8 +136,7 @@ public class GameManager : MonoBehaviour {
 	}
 
     public void Resume(){
-        PauseMenu.SetActive(false);
-        Time.timeScale = 1;
+        OnChangeState(GameState.IN_GAME);
     }
 
 	public void End(){
