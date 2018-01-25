@@ -19,7 +19,7 @@ public class ObjectGravity : MonoBehaviour {
         if (Input.GetKeyDown("g"))
         {
             switching = true;
-            StartCoroutine(WaitForEndOfFrame());
+            StartCoroutine(WaitForSeconds());
             gravity *= -1;
             rb.isKinematic = false;
         }
@@ -37,9 +37,9 @@ public class ObjectGravity : MonoBehaviour {
 
     }
 
-    IEnumerator WaitForEndOfFrame()
+    IEnumerator WaitForSeconds()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.5f);
         switching = false;
     }
 

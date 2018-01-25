@@ -15,7 +15,7 @@ public class OxygenLevels : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		oxygenSlider.value -= Time.deltaTime / 10;
+		oxygenSlider.value -= Time.deltaTime * speed;
         if (oxygenSlider.value <= 0)
         {
             FirstPersonController FPC = GetComponentInParent<FirstPersonController>();

@@ -136,13 +136,9 @@ using System.Collections;
 
         Vector3 p1 = transform.position + m_CharacterController.center + Vector3.up * -m_CharacterController.height * 0.5F;
         Vector3 p2 = p1 + Vector3.up * m_CharacterController.height;
-        float distanceToObstacle = 0;
 
         // Cast character controller shape 10 meters forward to see if it is about to hit anything.
-        if (Physics.CapsuleCast(p1, p2, m_CharacterController.radius, direction, out hitInfo, 2, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-            distanceToObstacle = hitInfo.distance;
-
-        print(distanceToObstacle);
+        Physics.CapsuleCast(p1, p2, m_CharacterController.radius, direction, out hitInfo, 2, Physics.AllLayers, QueryTriggerInteraction.Ignore);
 
         desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
@@ -240,7 +236,6 @@ using System.Collections;
 
         private void ProgressStepCycle(float speed)
         {
-        //print(m_CharacterController.velocity);
 
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
@@ -348,7 +343,7 @@ using System.Collections;
             {
                 return;
             }
-        //print(body);
+
             if (body == null || body.isKinematic)
             {
                 return;
