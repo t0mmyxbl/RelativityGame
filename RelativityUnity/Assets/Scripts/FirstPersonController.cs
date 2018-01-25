@@ -47,6 +47,9 @@ using System.Collections;
         private GameObject objectInteract;
         private bool isOnRoof;
 
+        private bool gameOver;
+        private bool playerDied;    
+
     // Use this for initialization
     private void Start()
         {
@@ -58,6 +61,8 @@ using System.Collections;
             m_StepCycle = 0f;
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
+            gameOver = false;
+            playerDied = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             g = GetComponent<PlayerGravity>();
@@ -179,16 +184,21 @@ using System.Collections;
             {
                 holdObjectScript.UpdateHeldObject(objectInteract);
             }
-            if ((objectInteract.tag == "Oxygen"))
+            if (objectInteract.tag == "Oxygen")
             {
                 oxygenScript.fillOxygen();
             }
-            if ((objectInteract.tag == "Door"))
+            if (objectInteract.tag == "Door")
             {
                 Animator animController = objectInteract.GetComponent<Animator>();
                 animController.Play("OpenDoor");
                 StartCoroutine(Wait(animController));
 
+            }
+            if (objectInteract.tag == "FinalDoor")
+            {
+                gameOver = true;
+                playerDied = false;
             }
         }
 
@@ -210,7 +220,7 @@ using System.Collections;
 
         private void ProgressStepCycle(float speed)
         {
-        print(m_CharacterController.velocity);
+        //print(m_CharacterController.velocity);
 
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
@@ -325,6 +335,22 @@ using System.Collections;
             }
 
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        }
+
+        public bool get_gameOver()
+        {
+            return gameOver;
+        }
+
+        public bool get_Death()
+        {
+            return playerDied;
+        }
+
+        public void set_gameOver(bool end, bool died)
+        {
+            gameOver = end;
+            playerDied = died;
         }
 		
     }

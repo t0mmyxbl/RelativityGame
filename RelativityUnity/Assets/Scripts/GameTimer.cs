@@ -17,6 +17,8 @@ public class GameTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         time += Time.deltaTime;
-        timeText.text = time.ToString("00:00");
+        string minutes = Mathf.Floor(time / 60).ToString("00");
+        string seconds = Mathf.Floor(time % 60).ToString("00");
+        timeText.text = minutes+":"+seconds;
 	}
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Oxygen
   - Door
+  - FinalDoor
   layers:
   - Default
   - TransparentFX
