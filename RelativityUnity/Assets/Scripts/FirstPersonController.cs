@@ -29,9 +29,9 @@ using System.Collections;
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
         private Vector3 direction;
-        private bool m_Jump;
+    [SerializeField] private bool m_Jump;
         private Vector2 m_Input;
-        private Vector3 m_MoveDir = Vector3.zero;
+    [SerializeField]    private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
@@ -39,13 +39,13 @@ using System.Collections;
         private Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
-        private bool m_Jumping;
+        [SerializeField]private bool m_Jumping;
         private AudioSource m_AudioSource;
         private PlayerGravity g;
         private HoldObject holdObjectScript;
         private OxygenLevels oxygenScript;
         private GameObject objectInteract;
-        private bool isOnRoof;
+        [SerializeField]private bool isOnRoof;
 
         private bool gameOver;
         private bool playerDied;    
@@ -137,7 +137,6 @@ using System.Collections;
         Vector3 p1 = transform.position + m_CharacterController.center + Vector3.up * -m_CharacterController.height * 0.5F;
         Vector3 p2 = p1 + Vector3.up * m_CharacterController.height;
 
-        // Cast character controller shape 10 meters forward to see if it is about to hit anything.
         Physics.CapsuleCast(p1, p2, m_CharacterController.radius, direction, out hitInfo, 2, Physics.AllLayers, QueryTriggerInteraction.Ignore);
 
         desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
@@ -160,6 +159,7 @@ using System.Collections;
             }
             else
             {
+
 			        m_MoveDir += new Vector3(0, g.gravity, 0)*m_GravityMultiplier*Time.fixedDeltaTime;
             }
 
@@ -352,23 +352,23 @@ using System.Collections;
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
 
-        public bool get_gameOver()
+        public bool Get_gameOver()
         {
             return gameOver;
         }
 
-        public bool get_Death()
+        public bool Get_Death()
         {
             return playerDied;
         }
 
-        public void set_gameOver(bool end, bool died)
+        public void Set_gameOver(bool end, bool died)
         {
             gameOver = end;
             playerDied = died;
         }
 
-        public void setdirection(Vector3 d)
+        public void Setdirection(Vector3 d)
     {
         direction = d;
     }

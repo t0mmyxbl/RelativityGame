@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (FPC.get_gameOver())
+        if (FPC.Get_gameOver())
         {
-            if (FPC.get_Death())
+            if (FPC.Get_Death())
             {
                 endMessage.text = "You died!";
             }

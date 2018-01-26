@@ -19,7 +19,7 @@ public class OxygenLevels : MonoBehaviour {
         if (oxygenSlider.value <= 0)
         {
             FirstPersonController FPC = GetComponentInParent<FirstPersonController>();
-            FPC.set_gameOver(true, true);
+            FPC.Set_gameOver(true, true);
         }
 	}
 

@@ -20,12 +20,12 @@ public class PlayerGravity : MonoBehaviour {
 
         if (gravity < 0)
         {
-            FPC.setdirection(Vector3.down);
+            FPC.Setdirection(Vector3.down);
         }
         else
             if (gravity > 0)
             {
-            FPC.setdirection(Vector3.up);
+            FPC.Setdirection(Vector3.up);
             }
         if (Input.GetKeyDown("g"))
         {
