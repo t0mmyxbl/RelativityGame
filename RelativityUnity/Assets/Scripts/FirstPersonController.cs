@@ -137,11 +137,8 @@ using System.Collections;
         // get a normal for the surface that is being touched to move along it
         RaycastHit hitInfo;
 
-        Vector3 p1 = transform.position + m_CharacterController.center + Vector3.up * -m_CharacterController.height * 0.5F;
-        Vector3 p2 = p1 + Vector3.up * m_CharacterController.height;
-
-        Physics.CapsuleCast(p1, p2, m_CharacterController.radius, direction, out hitInfo, 2, Physics.AllLayers, QueryTriggerInteraction.Ignore);
-
+        Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
+                           m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
         desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
         m_MoveDir.x = desiredMove.x * speed;
@@ -190,7 +187,7 @@ using System.Collections;
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 500, layerMask))
+        if (Physics.Raycast(ray, out hit, 100, layerMask))
         {
             objectInteract = hit.transform.gameObject;
 
@@ -338,7 +335,7 @@ using System.Collections;
                 return;
             }
 
-            if (body == null || body.isKinematic)
+            if (body == null || body.isKinematic || hit.gameObject.tag == "Walkable")
             {
                 return;
             }

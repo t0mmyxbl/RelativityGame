@@ -30,10 +30,14 @@ public class ObjectGravity : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        if (!switching)
+        if (col.gameObject.isStatic)
         {
-            rb.isKinematic = true;
+            if (!switching)
+            {
+                rb.isKinematic = true;
+            }
         }
+
 
     }
 
