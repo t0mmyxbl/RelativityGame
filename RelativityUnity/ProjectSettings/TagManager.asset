@@ -7,7 +7,7 @@ TagManager:
   - Oxygen
   - Door
   - FinalDoor
-  - Walkable
+  - Killable
   layers:
   - Default
   - TransparentFX

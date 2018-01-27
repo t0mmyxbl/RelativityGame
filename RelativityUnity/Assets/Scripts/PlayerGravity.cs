@@ -7,7 +7,7 @@ using UnityStandardAssets.Utility;
 public class PlayerGravity : MonoBehaviour {
 
 
-    public float gravity = -6;
+    public float gravity = -9.81f;
 	private FirstPersonController FPC;
 
 	void Start()

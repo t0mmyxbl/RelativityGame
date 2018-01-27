@@ -113,9 +113,22 @@ using System.Collections;
             if (Input.GetKeyDown(KeyCode.F))
                 GrabObject();
 
-
-            
+        RaycastHit hit;
+        int layerMask = 1 << 8;
+        layerMask = ~layerMask;
+        Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.up, out hit,
+                           m_CharacterController.height, layerMask, QueryTriggerInteraction.Ignore);
+        if (hit.transform != null)
+        {
+            if ((m_CharacterController.isGrounded || isOnRoof) && hit.collider.gameObject.tag == "Killable")
+            {
+                print("dead");
+                gameOver = true;
+                playerDied = true;
+            }
         }
+
+    }
 
 
         private void PlayLandingSound()

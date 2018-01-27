@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14581496, g: 0.13377205, b: 0.24863783, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5102,7 +5102,7 @@ Prefab:
     - target: {fileID: 54640664722200920, guid: 4d6ef56454cddd74f93d1945733fbe50,
         type: 2}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 64188136354809200, guid: 4d6ef56454cddd74f93d1945733fbe50,
         type: 2}
@@ -8212,7 +8212,7 @@ Prefab:
     - target: {fileID: 54039330879891414, guid: 816d438d386783b4cb738e3615662446,
         type: 2}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 64788076293456104, guid: 816d438d386783b4cb738e3615662446,
         type: 2}
@@ -13827,7 +13827,7 @@ Prefab:
     - target: {fileID: 54640664722200920, guid: 4d6ef56454cddd74f93d1945733fbe50,
         type: 2}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 64188136354809200, guid: 4d6ef56454cddd74f93d1945733fbe50,
         type: 2}
@@ -15070,6 +15070,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 1545763663035404, guid: 46531e96452236e46bfcf653fcf74049, type: 2}
+      propertyPath: m_TagString
+      value: Killable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46531e96452236e46bfcf653fcf74049, type: 2}
   m_IsPrefabParent: 0
@@ -16041,7 +16045,7 @@ Prefab:
     - target: {fileID: 54489937949895832, guid: 0747a393b18ccc4438f2ead3dcdf4fc0,
         type: 2}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 64309905112406794, guid: 0747a393b18ccc4438f2ead3dcdf4fc0,
         type: 2}

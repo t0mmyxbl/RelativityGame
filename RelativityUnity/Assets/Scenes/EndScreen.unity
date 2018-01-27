@@ -878,8 +878,9 @@ MonoBehaviour:
   MainOptionsMenu: {fileID: 0}
   OptionsMenu: {fileID: 0}
   PauseMenu: {fileID: 0}
-  player: {fileID: 0}
-  endMessage: {fileID: 2006911926}
+  player: {fileID: 1283702116151382, guid: 00ef535233cd6284385044e8d8352efa, type: 2}
+  endMessage: {fileID: 114145644239692704, guid: 436d72bec6e1e074e87e61f8fc9aff05,
+    type: 2}
 --- !u!114 &1837497747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,12 +931,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224525295084292842, guid: 436d72bec6e1e074e87e61f8fc9aff05,
     type: 2}
   m_PrefabInternal: {fileID: 2030204343}
---- !u!114 &2006911926 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114145644239692704, guid: 436d72bec6e1e074e87e61f8fc9aff05,
-    type: 2}
-  m_PrefabInternal: {fileID: 2030204343}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &2030204343
 Prefab:
   m_ObjectHideFlags: 0
