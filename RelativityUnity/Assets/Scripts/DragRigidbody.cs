@@ -8,7 +8,7 @@ namespace UnityStandardAssets.Utility
     {
         [SerializeField] private const float k_Spring = 50.0f;
         [SerializeField] private const float k_Damper = 5.0f;
-        [SerializeField] private const float k_Drag = 10.0f;
+        [SerializeField] private const float k_Drag = 1.0f;
         [SerializeField] private const float k_AngularDrag = 5.0f;
         [SerializeField] private const float k_Distance = 0.2f;
         [SerializeField] private const bool k_AttachToCenterOfMass = false;
