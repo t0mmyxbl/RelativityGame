@@ -122,7 +122,6 @@ using System.Collections;
         {
             if ((m_CharacterController.isGrounded || isOnRoof) && hit.collider.gameObject.tag == "Killable")
             {
-                print("dead");
                 gameOver = true;
                 playerDied = true;
             }
@@ -215,7 +214,7 @@ using System.Collections;
                 StartCoroutine(Wait(animController));
 
             }
-            if (objectInteract.tag == "FinalDoor")
+            if (objectInteract.tag == "Final")
             {
                 gameOver = true;
                 playerDied = false;

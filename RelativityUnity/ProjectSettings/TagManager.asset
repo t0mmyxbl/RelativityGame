@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Oxygen
   - Door
-  - FinalDoor
   - Killable
+  - Final
   layers:
   - Default
   - TransparentFX
