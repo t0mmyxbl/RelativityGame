@@ -28,10 +28,10 @@ using System.Collections;
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
-        private Vector3 direction;
-    [SerializeField] private bool m_Jump;
+        [SerializeField] private Vector3 direction;
+        [SerializeField] private bool m_Jump;
         private Vector2 m_Input;
-    [SerializeField]    private Vector3 m_MoveDir = Vector3.zero;
+        [SerializeField]    private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
@@ -39,10 +39,9 @@ using System.Collections;
         private Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
-        [SerializeField]private bool m_Jumping;
+        [SerializeField] private bool m_Jumping;
         private AudioSource m_AudioSource;
         private PlayerGravity g;
-        private HoldObject holdObjectScript;
         private OxygenLevels oxygenScript;
         private GameObject objectInteract;
         [SerializeField]private bool isOnRoof;
@@ -66,7 +65,6 @@ using System.Collections;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             g = GetComponent<PlayerGravity>();
-            holdObjectScript = GetComponentInChildren<HoldObject>();
             oxygenScript = GetComponent<OxygenLevels>();
     }
 
@@ -76,13 +74,14 @@ using System.Collections;
         {
 
         //set the character to be on the roof
-        if ((m_CharacterController.collisionFlags & CollisionFlags.Above) != 0)
+        if ((m_CharacterController.collisionFlags == CollisionFlags.Above))
+        {
             isOnRoof = true;
+        }
         else
             isOnRoof = false;
-
         //rotate view used for mouse input
-			RotateView ();
+        RotateView ();
 
 			// the jump state needs to read here to make sure it is not missed
             //if the player isnt jumping and the player presses the jump button, set jump to true
@@ -106,10 +105,16 @@ using System.Collections;
             if (!isOnRoof && !m_Jumping && m_PreviouslyOnRoof)
             {
                 m_MoveDir.y = 0f;
-        }
+            }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
             m_PreviouslyOnRoof = isOnRoof;
+
+            if (Input.GetKeyDown(KeyCode.F))
+                GrabObject();
+
+
+            
         }
 
 
@@ -121,18 +126,16 @@ using System.Collections;
         }
 
 
-        private void FixedUpdate()
-        {
-            float speed;
-            GetInput(out speed);
-            // always move along the camera forward as it is the direction that it being aimed at
-            Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
+    private void FixedUpdate()
+    {
 
-            // get a normal for the surface that is being touched to move along it
-            RaycastHit hitInfo;
-        //Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-        //                   m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+        float speed;
+        GetInput(out speed);
+        // always move along the camera forward as it is the direction that it being aimed at
+        Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
 
+        // get a normal for the surface that is being touched to move along it
+        RaycastHit hitInfo;
 
         Vector3 p1 = transform.position + m_CharacterController.center + Vector3.up * -m_CharacterController.height * 0.5F;
         Vector3 p2 = p1 + Vector3.up * m_CharacterController.height;
@@ -141,41 +144,36 @@ using System.Collections;
 
         desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-            m_MoveDir.x = desiredMove.x*speed;
-            m_MoveDir.z = desiredMove.z*speed;
-           
-		if (m_CharacterController.isGrounded || isOnRoof)
-            {
+        m_MoveDir.x = desiredMove.x * speed;
+        m_MoveDir.z = desiredMove.z * speed;
+
+        if (m_CharacterController.isGrounded || isOnRoof && !m_Jumping)
+        {
                 m_MoveDir.y = g.gravity;
 
+
             if (m_Jump)
-                {
-                    m_MoveDir.y = m_JumpSpeed;
-                    PlayJumpSound();
-                    m_Jump = false;
-                    m_Jumping = true;
-                }
-
-            }
-            else
             {
-
-			        m_MoveDir += new Vector3(0, g.gravity, 0)*m_GravityMultiplier*Time.fixedDeltaTime;
+                m_MoveDir.y = m_JumpSpeed;
+                PlayJumpSound();
+                m_Jump = false;
+                m_Jumping = true;
             }
 
-            m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
-
-            ProgressStepCycle(speed);
-            UpdateCameraPosition(speed);
-
-            m_MouseLook.UpdateCursorLock();
-
-        //hold object ////////////////////////////////////////////////////////////
-
-        if (Input.GetKeyDown(KeyCode.F))
-            GrabObject();
+        }
+        else
+        {
+            m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
         }
 
+        m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
+
+        ProgressStepCycle(speed);
+        UpdateCameraPosition(speed);
+
+        m_MouseLook.UpdateCursorLock();
+
+    }
 
     void GrabObject()
     {
@@ -196,10 +194,6 @@ using System.Collections;
         {
             objectInteract = hit.transform.gameObject;
 
-            if (objectInteract.GetComponent<Holdable>().canHold == true)
-            {
-                holdObjectScript.UpdateHeldObject(objectInteract);
-            }
             if (objectInteract.tag == "Oxygen")
             {
                 oxygenScript.fillOxygen();

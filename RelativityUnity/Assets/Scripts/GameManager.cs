@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 		gameState = startState;
 	}
 
-    void FixedUpdate()
+    void Update()
     {
         if (FPC.Get_gameOver())
         {

@@ -6,12 +6,12 @@ namespace UnityStandardAssets.Utility
 {
     public class DragRigidbody : MonoBehaviour
     {
-        const float k_Spring = 50.0f;
-        const float k_Damper = 5.0f;
-        const float k_Drag = 10.0f;
-        const float k_AngularDrag = 5.0f;
-        const float k_Distance = 0.2f;
-        const bool k_AttachToCenterOfMass = false;
+        [SerializeField] private const float k_Spring = 50.0f;
+        [SerializeField] private const float k_Damper = 5.0f;
+        [SerializeField] private const float k_Drag = 10.0f;
+        [SerializeField] private const float k_AngularDrag = 5.0f;
+        [SerializeField] private const float k_Distance = 0.2f;
+        [SerializeField] private const bool k_AttachToCenterOfMass = false;
 
         private SpringJoint m_SpringJoint;
 
@@ -28,10 +28,16 @@ namespace UnityStandardAssets.Utility
 
             // We need to actually hit an object
             RaycastHit hit = new RaycastHit();
+            int layerMask = 1 << 8;
+            layerMask = ~layerMask;
             if (
                 !Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition).origin,
                                  mainCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, 100,
-                                 Physics.DefaultRaycastLayers))
+                                 layerMask))
+            {
+                return;
+            }
+            if (!hit.transform.GetComponent<Holdable>().canHold)
             {
                 return;
             }
