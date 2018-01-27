@@ -196,7 +196,7 @@ using System.Collections;
 
             if (objectInteract.tag == "Oxygen")
             {
-                oxygenScript.fillOxygen();
+                oxygenScript.FillOxygen();
             }
             if (objectInteract.tag == "Door")
             {

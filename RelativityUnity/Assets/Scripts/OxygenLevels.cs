@@ -23,7 +23,7 @@ public class OxygenLevels : MonoBehaviour {
         }
 	}
 
-    public void fillOxygen()
+    public void FillOxygen()
     {
         oxygenSlider.value = 100;
     }

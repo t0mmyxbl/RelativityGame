@@ -14,7 +14,7 @@ public class ObjectGravity : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown("g"))
         {
@@ -39,7 +39,7 @@ public class ObjectGravity : MonoBehaviour {
 
     IEnumerator WaitForSeconds()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         switching = false;
     }
 
