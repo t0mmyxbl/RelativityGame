@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
 	enum GameState { START, MAIN, OPTIONS, IN_GAME, PAUSED, END};
-	[SerializeField]private GameState gameState;
-
+	 private GameState gameState;
 	[SerializeField] private GameState startState = GameState.START;
+
 	[SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject MainOptionsMenu;
 	[SerializeField] private GameObject OptionsMenu;
     [SerializeField] private GameObject PauseMenu;
+    [SerializeField] private GameObject player;
+
+
+    [SerializeField] private GameObject TimeManager;
+    [SerializeField] private Text endMessage;
+    private GameTimer gameTimer;
+    private FirstPersonController FPC;
 
     static private GameManager instance = null;
 
@@ -35,11 +43,28 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        FPC = player.GetComponent<FirstPersonController>();
+        gameTimer = TimeManager.GetComponent<GameTimer>();
+        endMessage.text = "";
 		gameState = startState;
 	}
 
-    void FixedUpdate()
+    void Update()
     {
+        if (FPC.Get_gameOver())
+        {
+            if (FPC.Get_Death())
+            {
+                endMessage.text = "You died!";
+            }
+            else
+            {
+                endMessage.text = "You made it in " + gameTimer.GetTime();
+            }
+
+            OnChangeState(GameState.END);
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 			OnChangeState (GameState.PAUSED);
@@ -92,8 +117,13 @@ public class GameManager : MonoBehaviour {
 				StartCoroutine (WaitForEndOfFrame ());
 				break;
 			case GameState.END:
+                    Time.timeScale = 0;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
 
-				StartCoroutine (WaitForEndOfFrame ());
+                    SceneManager.LoadScene("EndScreen");
+
+                    StartCoroutine (WaitForEndOfFrame ());
 				break;
 			case GameState.MAIN:
 				Time.timeScale = 0;

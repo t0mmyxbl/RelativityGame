@@ -9,7 +9,7 @@ public class PlayerGravity : MonoBehaviour {
 	[SerializeField] private AudioClip InvertGravitySound;
 	[SerializeField] private AudioSource m_AudioSource;
 
-    public float gravity = -6;
+    public float gravity = -9.81f;
 	private FirstPersonController FPC;
 
 	void Start()
@@ -18,10 +18,23 @@ public class PlayerGravity : MonoBehaviour {
 		FPC = GetComponent <FirstPersonController> ();
 	}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Tom2
 	void Update()
     {
+
+        if (gravity < 0)
+        {
+            FPC.Setdirection(Vector3.down);
+        }
+        else
+            if (gravity > 0)
+            {
+            FPC.Setdirection(Vector3.up);
+            }
         if (Input.GetKeyDown("g"))
         {
 			m_AudioSource.clip = InvertGravitySound;

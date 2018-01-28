@@ -31,10 +31,10 @@ using System.Collections;
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
-
-        private bool m_Jump;
+        [SerializeField] private Vector3 direction;
+        [SerializeField] private bool m_Jump;
         private Vector2 m_Input;
-        private Vector3 m_MoveDir = Vector3.zero;
+        [SerializeField]    private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
@@ -42,13 +42,16 @@ using System.Collections;
         private Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
-        private bool m_Jumping;
+        [SerializeField] private bool m_Jumping;
         private AudioSource m_AudioSource;
         private PlayerGravity g;
-        private HoldObject holdObjectScript;
         private OxygenLevels oxygenScript;
         private GameObject objectInteract;
-        private bool isOnRoof;
+        [SerializeField]private bool isOnRoof;
+        private int numKeycards;
+
+        private bool gameOver;
+        private bool playerDied;    
 
     // Use this for initialization
     private void Start()
@@ -61,16 +64,19 @@ using System.Collections;
             m_StepCycle = 0f;
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
+            gameOver = false;
+            playerDied = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             g = GetComponent<PlayerGravity>();
-            holdObjectScript = GetComponentInChildren<HoldObject>();
             oxygenScript = GetComponent<OxygenLevels>();
+            numKeycards = 0;
     }
 
 
         // Update is called once per frame
         private void Update()
+<<<<<<< HEAD
 	{
 		
 
@@ -79,34 +85,65 @@ using System.Collections;
 
 
         if ((m_CharacterController.collisionFlags & CollisionFlags.Above) != 0)
+=======
+        {
+
+        //set the character to be on the roof
+        if ((m_CharacterController.collisionFlags == CollisionFlags.Above))
+        {
+>>>>>>> Tom2
             isOnRoof = true;
+        }
         else
             isOnRoof = false;
-
-			RotateView ();
+        //rotate view used for mouse input
+        RotateView ();
 
 			// the jump state needs to read here to make sure it is not missed
+            //if the player isnt jumping and the player presses the jump button, set jump to true
 			if (!m_Jump) {
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}
 
+            //if the player was not grounded or on roof last frame but is in the current frame../
             if ((!m_PreviouslyGrounded && m_CharacterController.isGrounded) || (!m_PreviouslyOnRoof && isOnRoof)) {
+                //start the jump bob cycle, play the landing sound, set the vertical movement to 0 and set it so the player isnt jumping
 				StartCoroutine (m_JumpBob.DoBobCycle ());
 				PlayLandingSound ();
 				m_MoveDir.y = 0f;
 				m_Jumping = false;
 			}
+            //if the character is not on the ground and is not jumping but was previously grounded, set the vertical movement to 0
 			if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
 				m_MoveDir.y = 0f;
 			}
+            //same as above but for on roof
             if (!isOnRoof && !m_Jumping && m_PreviouslyOnRoof)
             {
                 m_MoveDir.y = 0f;
-        }
+            }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
             m_PreviouslyOnRoof = isOnRoof;
+
+            if (Input.GetKeyDown(KeyCode.F))
+                GrabObject();
+
+        RaycastHit hit;
+        int layerMask = 1 << 8;
+        layerMask = ~layerMask;
+        Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.up, out hit,
+                           m_CharacterController.height, layerMask, QueryTriggerInteraction.Ignore);
+        if (hit.transform != null)
+        {
+            if ((m_CharacterController.isGrounded || isOnRoof) && hit.collider.gameObject.tag == "Killable")
+            {
+                gameOver = true;
+                playerDied = true;
+            }
         }
+
+    }
 
 
         private void PlayLandingSound()
@@ -117,56 +154,64 @@ using System.Collections;
         }
 
 
+<<<<<<< HEAD
 
 		
 	
 
         private void FixedUpdate()
+=======
+    private void FixedUpdate()
+    {
+
+        float speed;
+        GetInput(out speed);
+        // always move along the camera forward as it is the direction that it being aimed at
+        Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
+
+        // get a normal for the surface that is being touched to move along it
+        RaycastHit hitInfo;
+
+        Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
+                           m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+        desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+
+        m_MoveDir.x = desiredMove.x * speed;
+        m_MoveDir.z = desiredMove.z * speed;
+
+        if (m_CharacterController.isGrounded || isOnRoof && !m_Jumping)
+>>>>>>> Tom2
         {
-            float speed;
-            GetInput(out speed);
-            // always move along the camera forward as it is the direction that it being aimed at
-            Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
-
-            // get a normal for the surface that is being touched to move along it
-            RaycastHit hitInfo;
-            Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-                               m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
-            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
-
-            m_MoveDir.x = desiredMove.x*speed;
-            m_MoveDir.z = desiredMove.z*speed;
-           
-		if (m_CharacterController.isGrounded || isOnRoof)
-            {
                 m_MoveDir.y = g.gravity;
 
+
             if (m_Jump)
-                {
-                    m_MoveDir.y = m_JumpSpeed;
-                    PlayJumpSound();
-                    m_Jump = false;
-                    m_Jumping = true;
-                }
-
-            }
-            else
             {
-			        m_MoveDir += new Vector3(0, g.gravity, 0)*m_GravityMultiplier*Time.fixedDeltaTime;
+                m_MoveDir.y = m_JumpSpeed;
+                PlayJumpSound();
+                m_Jump = false;
+                m_Jumping = true;
             }
 
-            m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
-
-            ProgressStepCycle(speed);
-            UpdateCameraPosition(speed);
-
-            m_MouseLook.UpdateCursorLock();
-
-        //hold object ////////////////////////////////////////////////////////////
-
-        
+        }
+        else
+        {
+            m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
         }
 
+        m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
+
+        ProgressStepCycle(speed);
+        UpdateCameraPosition(speed);
+
+<<<<<<< HEAD
+        
+        }
+=======
+        m_MouseLook.UpdateCursorLock();
+>>>>>>> Tom2
+
+    }
 
     void GrabObject()
     {
@@ -183,22 +228,44 @@ using System.Collections;
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 500, layerMask))
+        if (Physics.Raycast(ray, out hit, 100, layerMask))
         {
             objectInteract = hit.transform.gameObject;
 
-            if (objectInteract.GetComponent<Holdable>().canHold == true)
+            if (objectInteract.tag == "Oxygen")
             {
-                holdObjectScript.UpdateHeldObject(objectInteract);
+                oxygenScript.FillOxygen();
             }
-            if ((objectInteract.tag == "Oxygen"))
+            if (objectInteract.tag == "Door")
             {
+                if (numKeycards > 0 && objectInteract.GetComponent<ObjectProperties>().IsLocked())
+                {
+                    objectInteract.GetComponent<ObjectProperties>().SetLocked(false);
+                    numKeycards -= 1;
+                }
+                if (!(objectInteract.GetComponent<ObjectProperties>().IsLocked()))
+                {
+                    Animator animController = objectInteract.GetComponent<Animator>();
+                    animController.Play("OpenDoor");
+                    StartCoroutine(Wait(animController));
+                }
+
+
+            }
+            if (objectInteract.tag == "Final")
+            {
+<<<<<<< HEAD
 				m_AudioSource.clip = OxygenFillSound;
 				m_AudioSource.Play();
                 oxygenScript.fillOxygen();
+=======
+                gameOver = true;
+                playerDied = false;
+>>>>>>> Tom2
             }
-            if ((objectInteract.tag == "Door"))
+            if(objectInteract.tag == "keycard")
             {
+<<<<<<< HEAD
 								
 					m_AudioSource.clip = DoorSound;
 					m_AudioSource.Play();
@@ -209,6 +276,10 @@ using System.Collections;
 					m_AudioSource.clip = DoorSound;
 					m_AudioSource.Play();
 
+=======
+                numKeycards += 1;
+                Destroy(objectInteract);
+>>>>>>> Tom2
             }
         }
 
@@ -217,8 +288,10 @@ using System.Collections;
 
     IEnumerator Wait(Animator animController)
     {
+
         yield return new WaitForSeconds(5);
         animController.Play("CloseDoor");
+
     }
 
     private void PlayJumpSound()
@@ -230,7 +303,6 @@ using System.Collections;
 
         private void ProgressStepCycle(float speed)
         {
-        print(m_CharacterController.velocity);
 
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
@@ -338,13 +410,37 @@ using System.Collections;
             {
                 return;
             }
-        //print(body);
-            if (body == null || body.isKinematic)
+
+            if (body == null || body.isKinematic || body.gameObject.tag == "Walkable")
             {
+
                 return;
             }
-
-            body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+            if (body.GetComponent<ObjectProperties>().IsPushable())
+            {
+                body.AddForceAtPosition(m_CharacterController.velocity * 0.8f, hit.point, ForceMode.Impulse);
+            }
         }
+
+        public bool Get_gameOver()
+        {
+            return gameOver;
+        }
+
+        public bool Get_Death()
+        {
+            return playerDied;
+        }
+
+        public void Set_gameOver(bool end, bool died)
+        {
+            gameOver = end;
+            playerDied = died;
+        }
+
+        public void Setdirection(Vector3 d)
+    {
+        direction = d;
+    }
 		
     }
