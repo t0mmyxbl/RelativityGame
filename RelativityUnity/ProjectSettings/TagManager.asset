@@ -9,6 +9,7 @@ TagManager:
   - Killable
   - Final
   - keycard
+  - Walkable
   layers:
   - Default
   - TransparentFX

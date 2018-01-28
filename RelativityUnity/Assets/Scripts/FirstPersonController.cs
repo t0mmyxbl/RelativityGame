@@ -14,9 +14,6 @@ using System.Collections;
         public MouseLook m_MouseLook;
         public Camera m_Camera;
 
-	[SerializeField] private AudioClip OxygenFillSound;
-	[SerializeField] private AudioClip DoorSound;
-
 		[SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -31,10 +28,12 @@ using System.Collections;
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
-        [SerializeField] private Vector3 direction;
-        [SerializeField] private bool m_Jump;
+        [SerializeField] private AudioClip OxygenFillSound;
+	    [SerializeField] private AudioClip DoorSound;
+        private Vector3 direction;
+        private bool m_Jump;
         private Vector2 m_Input;
-        [SerializeField]    private Vector3 m_MoveDir = Vector3.zero;
+        private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
@@ -42,12 +41,12 @@ using System.Collections;
         private Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
-        [SerializeField] private bool m_Jumping;
+        private bool m_Jumping;
         private AudioSource m_AudioSource;
         private PlayerGravity g;
         private OxygenLevels oxygenScript;
         private GameObject objectInteract;
-        [SerializeField]private bool isOnRoof;
+        private bool isOnRoof;
         private int numKeycards;
 
         private bool gameOver;
@@ -76,22 +75,11 @@ using System.Collections;
 
         // Update is called once per frame
         private void Update()
-<<<<<<< HEAD
-	{
-		
-
-	if (Input.GetKeyDown(KeyCode.F))
-		GrabObject();
-
-
-        if ((m_CharacterController.collisionFlags & CollisionFlags.Above) != 0)
-=======
         {
 
         //set the character to be on the roof
         if ((m_CharacterController.collisionFlags == CollisionFlags.Above))
         {
->>>>>>> Tom2
             isOnRoof = true;
         }
         else
@@ -154,13 +142,6 @@ using System.Collections;
         }
 
 
-<<<<<<< HEAD
-
-		
-	
-
-        private void FixedUpdate()
-=======
     private void FixedUpdate()
     {
 
@@ -180,7 +161,6 @@ using System.Collections;
         m_MoveDir.z = desiredMove.z * speed;
 
         if (m_CharacterController.isGrounded || isOnRoof && !m_Jumping)
->>>>>>> Tom2
         {
                 m_MoveDir.y = g.gravity;
 
@@ -204,12 +184,7 @@ using System.Collections;
         ProgressStepCycle(speed);
         UpdateCameraPosition(speed);
 
-<<<<<<< HEAD
-        
-        }
-=======
         m_MouseLook.UpdateCursorLock();
->>>>>>> Tom2
 
     }
 
@@ -235,6 +210,8 @@ using System.Collections;
             if (objectInteract.tag == "Oxygen")
             {
                 oxygenScript.FillOxygen();
+                m_AudioSource.clip = OxygenFillSound;
+				m_AudioSource.Play();
             }
             if (objectInteract.tag == "Door")
             {
@@ -246,6 +223,8 @@ using System.Collections;
                 if (!(objectInteract.GetComponent<ObjectProperties>().IsLocked()))
                 {
                     Animator animController = objectInteract.GetComponent<Animator>();
+                    m_AudioSource.clip = DoorSound;
+					m_AudioSource.Play();
                     animController.Play("OpenDoor");
                     StartCoroutine(Wait(animController));
                 }
@@ -254,32 +233,13 @@ using System.Collections;
             }
             if (objectInteract.tag == "Final")
             {
-<<<<<<< HEAD
-				m_AudioSource.clip = OxygenFillSound;
-				m_AudioSource.Play();
-                oxygenScript.fillOxygen();
-=======
                 gameOver = true;
                 playerDied = false;
->>>>>>> Tom2
             }
             if(objectInteract.tag == "keycard")
             {
-<<<<<<< HEAD
-								
-					m_AudioSource.clip = DoorSound;
-					m_AudioSource.Play();
-				
-                Animator animController = objectInteract.GetComponent<Animator>();
-                animController.Play("OpenDoor");
-                StartCoroutine(Wait(animController));
-					m_AudioSource.clip = DoorSound;
-					m_AudioSource.Play();
-
-=======
                 numKeycards += 1;
                 Destroy(objectInteract);
->>>>>>> Tom2
             }
         }
 
@@ -411,7 +371,7 @@ using System.Collections;
                 return;
             }
 
-            if (body == null || body.isKinematic || body.gameObject.tag == "Walkable")
+            if (body == null || body.isKinematic)
             {
 
                 return;
