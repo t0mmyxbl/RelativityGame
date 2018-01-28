@@ -14,6 +14,9 @@ using System.Collections;
         public MouseLook m_MouseLook;
         public Camera m_Camera;
 
+		
+	[SerializeField] private AudioSource ExternalSFXSource;
+
 		[SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -30,6 +33,8 @@ using System.Collections;
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
         [SerializeField] private AudioClip OxygenFillSound;
 	    [SerializeField] private AudioClip DoorSound;
+		[SerializeField] private AudioClip DoorLockedSound;
+		[SerializeField] private AudioClip KeyCardSound;
         private Vector3 direction;
         private bool m_Jump;
         private Vector2 m_Input;
@@ -210,24 +215,30 @@ using System.Collections;
             if (objectInteract.tag == "Oxygen")
             {
                 oxygenScript.FillOxygen();
-                m_AudioSource.clip = OxygenFillSound;
-				m_AudioSource.Play();
+				ExternalSFXSource.clip = OxygenFillSound;
+				ExternalSFXSource.Play();
             }
             if (objectInteract.tag == "Door")
             {
-                if (numKeycards > 0 && objectInteract.GetComponent<ObjectProperties>().IsLocked())
-                {
-                    objectInteract.GetComponent<ObjectProperties>().SetLocked(false);
-                    numKeycards -= 1;
-                }
-                if (!(objectInteract.GetComponent<ObjectProperties>().IsLocked()))
-                {
-                    Animator animController = objectInteract.GetComponent<Animator>();
-                    m_AudioSource.clip = DoorSound;
-					m_AudioSource.Play();
-                    animController.Play("OpenDoor");
-                    StartCoroutine(Wait(animController));
-                }
+				if (numKeycards <= 0 && objectInteract.GetComponent<ObjectProperties> ().IsLocked ()) {
+					ExternalSFXSource.clip = DoorLockedSound;
+					ExternalSFXSource.Play ();
+				} else {
+					if (numKeycards > 0 && objectInteract.GetComponent<ObjectProperties> ().IsLocked ()) {
+						objectInteract.GetComponent<ObjectProperties> ().SetLocked (false);
+						numKeycards -= 1; //door locked sound
+
+					}
+					if (!(objectInteract.GetComponent<ObjectProperties> ().IsLocked ())) {
+						Animator animController = objectInteract.GetComponent<Animator> ();
+						m_AudioSource.clip = DoorSound;
+						m_AudioSource.Play ();
+						animController.Play ("OpenDoor");
+						StartCoroutine (Wait (animController));
+						ExternalSFXSource.clip = DoorSound;
+						ExternalSFXSource.Play ();
+					}
+				}
 
 
             }
@@ -240,6 +251,8 @@ using System.Collections;
             {
                 numKeycards += 1;
                 Destroy(objectInteract);
+				ExternalSFXSource.clip = KeyCardSound;
+				ExternalSFXSource.Play ();
             }
         }
 
