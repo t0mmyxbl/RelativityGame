@@ -17,9 +17,10 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject player;
 
+
     [SerializeField] private GameObject TimeManager;
     [SerializeField] private Text endMessage;
-
+    private GameTimer gameTimer;
     private FirstPersonController FPC;
 
     static private GameManager instance = null;
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         FPC = player.GetComponent<FirstPersonController>();
-        GameTimer gameTimer = TimeManager.GetComponent<GameTimer>();
+        gameTimer = TimeManager.GetComponent<GameTimer>();
         endMessage.text = "";
 		gameState = startState;
 	}
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour {
             }
             else
             {
-                endMessage.text = "You made it in " + timer;
+                endMessage.text = "You made it in " + gameTimer.GetTime();
             }
 
             OnChangeState(GameState.END);

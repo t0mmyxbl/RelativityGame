@@ -21,4 +21,9 @@ public class GameTimer : MonoBehaviour {
         string seconds = Mathf.Floor(time % 60).ToString("00");
         timeText.text = minutes+":"+seconds;
 	}
+
+    public string GetTime()
+    {
+        return timeText.text;
+    }
 }

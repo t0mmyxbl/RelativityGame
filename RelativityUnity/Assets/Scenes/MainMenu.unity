@@ -1215,7 +1215,6 @@ GameObject:
   - component: {fileID: 1162456025}
   - component: {fileID: 1162456024}
   - component: {fileID: 1918001260}
-  - component: {fileID: 1162456028}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1271,17 +1270,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1162456028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1162456023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7de5e95e4be8ebb449973e2082e25864, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1539355631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,8 +1561,7 @@ Prefab:
         type: 2}
       propertyPath: PauseMenu
       value: 
-      objectReference: {fileID: 1860566322638524, guid: 29d6e8abd732171488243baf9b9957f7,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 114957453032897734, guid: 258e60768d0058440844be52d919f585,
         type: 2}
       propertyPath: player
@@ -1585,8 +1572,12 @@ Prefab:
         type: 2}
       propertyPath: endMessage
       value: 
-      objectReference: {fileID: 114145644239692704, guid: 436d72bec6e1e074e87e61f8fc9aff05,
+      objectReference: {fileID: 0}
+    - target: {fileID: 114957453032897734, guid: 258e60768d0058440844be52d919f585,
         type: 2}
+      propertyPath: TimeManager
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 258e60768d0058440844be52d919f585, type: 2}
   m_IsPrefabParent: 0
@@ -1606,10 +1597,10 @@ MonoBehaviour:
   MainMenu: {fileID: 461317639}
   MainOptionsMenu: {fileID: 2062111770}
   OptionsMenu: {fileID: 0}
-  PauseMenu: {fileID: 1860566322638524, guid: 29d6e8abd732171488243baf9b9957f7, type: 2}
+  PauseMenu: {fileID: 0}
   player: {fileID: 1283702116151382, guid: 00ef535233cd6284385044e8d8352efa, type: 2}
-  endMessage: {fileID: 114145644239692704, guid: 436d72bec6e1e074e87e61f8fc9aff05,
-    type: 2}
+  TimeManager: {fileID: 0}
+  endMessage: {fileID: 0}
 --- !u!224 &1956873590
 RectTransform:
   m_ObjectHideFlags: 0

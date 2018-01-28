@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpSpeed: 12
+  m_JumpSpeed: 13
   m_MouseLook:
     XSensitivity: 2
     YSensitivity: 2
@@ -323,8 +323,8 @@ MonoBehaviour:
     m_CameraTargetRot: {x: 0, y: 0, z: 0, w: 0}
   m_Camera: {fileID: 0}
   m_IsWalking: 0
-  m_WalkSpeed: 7
-  m_RunSpeed: 10
+  m_WalkSpeed: 8
+  m_RunSpeed: 12
   m_RunstepLenghten: 0.7
   m_GravityMultiplier: 4
   m_UseFovKick: 1
@@ -354,7 +354,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   m_UseHeadBob: 1
   m_HeadBob:
-    HorizontalBobRange: 0.1
+    HorizontalBobRange: 0
     VerticalBobRange: 0.1
     Bobcurve:
       serializedVersion: 2

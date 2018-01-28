@@ -879,6 +879,8 @@ MonoBehaviour:
   OptionsMenu: {fileID: 0}
   PauseMenu: {fileID: 0}
   player: {fileID: 1283702116151382, guid: 00ef535233cd6284385044e8d8352efa, type: 2}
+  TimeManager: {fileID: 1252189016591546, guid: a3fa5bab3c0f43e46b858332f0557448,
+    type: 2}
   endMessage: {fileID: 114145644239692704, guid: 436d72bec6e1e074e87e61f8fc9aff05,
     type: 2}
 --- !u!114 &1837497747
@@ -981,12 +983,12 @@ Prefab:
     - target: {fileID: 224525295084292842, guid: 436d72bec6e1e074e87e61f8fc9aff05,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 190.1
+      value: 187.7
       objectReference: {fileID: 0}
     - target: {fileID: 224525295084292842, guid: 436d72bec6e1e074e87e61f8fc9aff05,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 323.5
+      value: 310
       objectReference: {fileID: 0}
     - target: {fileID: 224525295084292842, guid: 436d72bec6e1e074e87e61f8fc9aff05,
         type: 2}
@@ -996,7 +998,7 @@ Prefab:
     - target: {fileID: 224525295084292842, guid: 436d72bec6e1e074e87e61f8fc9aff05,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 113.5
+      value: 95.8
       objectReference: {fileID: 0}
     - target: {fileID: 224525295084292842, guid: 436d72bec6e1e074e87e61f8fc9aff05,
         type: 2}
@@ -1036,7 +1038,7 @@ Prefab:
     - target: {fileID: 114145644239692704, guid: 436d72bec6e1e074e87e61f8fc9aff05,
         type: 2}
       propertyPath: m_FontData.m_FontSize
-      value: 18
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 114145644239692704, guid: 436d72bec6e1e074e87e61f8fc9aff05,
         type: 2}

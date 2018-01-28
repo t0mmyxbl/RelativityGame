@@ -226,8 +226,10 @@ using System.Collections;
 
     IEnumerator Wait(Animator animController)
     {
+
         yield return new WaitForSeconds(5);
         animController.Play("CloseDoor");
+
     }
 
     private void PlayJumpSound()
