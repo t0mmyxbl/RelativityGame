@@ -14,7 +14,10 @@ using System.Collections;
         public MouseLook m_MouseLook;
         public Camera m_Camera;
 
-        [SerializeField] private bool m_IsWalking;
+	[SerializeField] private AudioClip OxygenFillSound;
+	[SerializeField] private AudioClip DoorSound;
+
+		[SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
@@ -68,7 +71,13 @@ using System.Collections;
 
         // Update is called once per frame
         private void Update()
-        {
+	{
+		
+
+	if (Input.GetKeyDown(KeyCode.F))
+		GrabObject();
+
+
         if ((m_CharacterController.collisionFlags & CollisionFlags.Above) != 0)
             isOnRoof = true;
         else
@@ -107,6 +116,10 @@ using System.Collections;
             m_NextStep = m_StepCycle + .5f;
         }
 
+
+
+		
+	
 
         private void FixedUpdate()
         {
@@ -151,8 +164,7 @@ using System.Collections;
 
         //hold object ////////////////////////////////////////////////////////////
 
-        if (Input.GetKeyDown(KeyCode.F))
-            GrabObject();
+        
         }
 
 
@@ -181,13 +193,21 @@ using System.Collections;
             }
             if ((objectInteract.tag == "Oxygen"))
             {
+				m_AudioSource.clip = OxygenFillSound;
+				m_AudioSource.Play();
                 oxygenScript.fillOxygen();
             }
             if ((objectInteract.tag == "Door"))
             {
+								
+					m_AudioSource.clip = DoorSound;
+					m_AudioSource.Play();
+				
                 Animator animController = objectInteract.GetComponent<Animator>();
                 animController.Play("OpenDoor");
                 StartCoroutine(Wait(animController));
+					m_AudioSource.clip = DoorSound;
+					m_AudioSource.Play();
 
             }
         }
