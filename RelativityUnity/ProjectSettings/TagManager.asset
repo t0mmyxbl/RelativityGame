@@ -8,6 +8,7 @@ TagManager:
   - Door
   - Killable
   - Final
+  - keycard
   layers:
   - Default
   - TransparentFX

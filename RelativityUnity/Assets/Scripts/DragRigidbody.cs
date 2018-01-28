@@ -37,7 +37,7 @@ namespace UnityStandardAssets.Utility
             {
                 return;
             }
-            if (!hit.transform.GetComponent<Holdable>().canHold)
+            if (!hit.transform.GetComponent<ObjectProperties>().GetCanHold())
             {
                 return;
             }

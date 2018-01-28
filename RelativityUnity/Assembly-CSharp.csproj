@@ -60,11 +60,11 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameTimer.cs" />
      <Compile Include="Assets\Scripts\HeadBob.cs" />
-     <Compile Include="Assets\Scripts\Holdable.cs" />
      <Compile Include="Assets\Scripts\HoldObject.cs" />
      <Compile Include="Assets\Scripts\LerpControlledBob.cs" />
      <Compile Include="Assets\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Scripts\ObjectGravity.cs" />
+     <Compile Include="Assets\Scripts\ObjectProperties.cs" />
      <Compile Include="Assets\Scripts\OxygenLevels.cs" />
      <Compile Include="Assets\Scripts\PlayerGravity.cs" />
      <Compile Include="Assets\Scripts\RigidbodyFirstPersonController.cs" />

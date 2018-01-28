@@ -45,6 +45,7 @@ using System.Collections;
         private OxygenLevels oxygenScript;
         private GameObject objectInteract;
         [SerializeField]private bool isOnRoof;
+        private int numKeycards;
 
         private bool gameOver;
         private bool playerDied;    
@@ -66,6 +67,7 @@ using System.Collections;
 			m_MouseLook.Init(transform , m_Camera.transform);
             g = GetComponent<PlayerGravity>();
             oxygenScript = GetComponent<OxygenLevels>();
+            numKeycards = 0;
     }
 
 
@@ -209,15 +211,29 @@ using System.Collections;
             }
             if (objectInteract.tag == "Door")
             {
-                Animator animController = objectInteract.GetComponent<Animator>();
-                animController.Play("OpenDoor");
-                StartCoroutine(Wait(animController));
+                if (numKeycards > 0 && objectInteract.GetComponent<ObjectProperties>().IsLocked())
+                {
+                    objectInteract.GetComponent<ObjectProperties>().SetLocked(false);
+                    numKeycards -= 1;
+                }
+                if (!(objectInteract.GetComponent<ObjectProperties>().IsLocked()))
+                {
+                    Animator animController = objectInteract.GetComponent<Animator>();
+                    animController.Play("OpenDoor");
+                    StartCoroutine(Wait(animController));
+                }
+
 
             }
             if (objectInteract.tag == "Final")
             {
                 gameOver = true;
                 playerDied = false;
+            }
+            if(objectInteract.tag == "keycard")
+            {
+                numKeycards += 1;
+                Destroy(objectInteract);
             }
         }
 
@@ -349,12 +365,15 @@ using System.Collections;
                 return;
             }
 
-            if (body == null || body.isKinematic || hit.gameObject.tag == "Walkable")
+            if (body == null || body.isKinematic || body.gameObject.tag == "Walkable")
             {
+
                 return;
             }
-
-            body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+            if (body.GetComponent<ObjectProperties>().IsPushable())
+            {
+                body.AddForceAtPosition(m_CharacterController.velocity * 0.8f, hit.point, ForceMode.Impulse);
+            }
         }
 
         public bool Get_gameOver()
