@@ -873,9 +873,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f23099b6f20e7428fed6e5b2d19856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
   startState: 0
   MainMenu: {fileID: 0}
-  MainOptionsMenu: {fileID: 0}
+  MainHelpMenu: {fileID: 0}
   OptionsMenu: {fileID: 0}
   PauseMenu: {fileID: 0}
   player: {fileID: 1283702116151382, guid: 00ef535233cd6284385044e8d8352efa, type: 2}

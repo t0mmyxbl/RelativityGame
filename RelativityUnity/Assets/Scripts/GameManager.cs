@@ -7,16 +7,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-	enum GameState { START, MAIN, OPTIONS, IN_GAME, PAUSED, END};
-	 private GameState gameState;
+	enum GameState { START, MAIN, HELP, IN_GAME, PAUSED, END};
+	 [SerializeField] private GameState gameState;
 	[SerializeField] private GameState startState = GameState.START;
 
 	[SerializeField] private GameObject MainMenu;
-    [SerializeField] private GameObject MainOptionsMenu;
+    [SerializeField] private GameObject MainHelpMenu;
 	[SerializeField] private GameObject OptionsMenu;
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject player;
-
 
     [SerializeField] private GameObject TimeManager;
     [SerializeField] private Text endMessage;
@@ -45,7 +44,6 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         FPC = player.GetComponent<FirstPersonController>();
         gameTimer = TimeManager.GetComponent<GameTimer>();
-        endMessage.text = "";
 		gameState = startState;
 	}
 
@@ -86,12 +84,12 @@ public class GameManager : MonoBehaviour {
 				StartCoroutine (WaitForEndOfFrame ());
 
 				break;
-			case GameState.OPTIONS:
+			case GameState.HELP:
 				Time.timeScale = 0;
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
 
-                MainOptionsMenu.SetActive(true);
+                MainHelpMenu.SetActive(true);
                 MainMenu.SetActive(false);
                 
 
@@ -131,7 +129,7 @@ public class GameManager : MonoBehaviour {
 				Cursor.visible = true;
 
                 MainMenu.SetActive(true);
-                MainOptionsMenu.SetActive(false);
+                MainHelpMenu.SetActive(false);
 
 				StartCoroutine (WaitForEndOfFrame ());
 
@@ -161,8 +159,8 @@ public class GameManager : MonoBehaviour {
         OnChangeState (GameState.IN_GAME);
 	}
 
-	public void Options(){
-		OnChangeState (GameState.OPTIONS);
+	public void Help(){
+		OnChangeState (GameState.HELP);
 	}
 
     public void Resume(){

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class OxygenLevels : MonoBehaviour {
 
-	[SerializeField]private Slider oxygenSlider;
-	[SerializeField]private float speed;
+	[SerializeField] private Slider oxygenSlider;
+	[SerializeField] private float speed;
 
 	// Use this for initialization
 	void Start () {

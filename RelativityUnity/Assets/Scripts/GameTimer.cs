@@ -11,6 +11,7 @@ public class GameTimer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         time = 0;
+        timeText = GameObject.Find("Timer").GetComponent<Text>();
         timeText.text = "00:00";
 	}
 	

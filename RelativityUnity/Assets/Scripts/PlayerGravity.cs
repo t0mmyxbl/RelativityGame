@@ -21,15 +21,6 @@ public class PlayerGravity : MonoBehaviour {
 	void Update()
     {
 
-        if (gravity < 0)
-        {
-            FPC.Setdirection(Vector3.down);
-        }
-        else
-            if (gravity > 0)
-            {
-            FPC.Setdirection(Vector3.up);
-            }
         if (Input.GetKeyDown("g"))
         {
 			m_AudioSource.clip = InvertGravitySound;

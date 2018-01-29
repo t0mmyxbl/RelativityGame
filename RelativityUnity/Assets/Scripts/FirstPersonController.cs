@@ -35,7 +35,7 @@ using System.Collections;
 	    [SerializeField] private AudioClip DoorSound;
 		[SerializeField] private AudioClip DoorLockedSound;
 		[SerializeField] private AudioClip KeyCardSound;
-        private Vector3 direction;
+
         private bool m_Jump;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
@@ -84,9 +84,7 @@ using System.Collections;
 
         //set the character to be on the roof
         if ((m_CharacterController.collisionFlags == CollisionFlags.Above))
-        {
             isOnRoof = true;
-        }
         else
             isOnRoof = false;
         //rotate view used for mouse input
@@ -410,10 +408,5 @@ using System.Collections;
             gameOver = end;
             playerDied = died;
         }
-
-        public void Setdirection(Vector3 d)
-    {
-        direction = d;
-    }
 		
     }
