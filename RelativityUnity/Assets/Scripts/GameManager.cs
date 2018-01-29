@@ -38,12 +38,16 @@ public class GameManager : MonoBehaviour {
 
 			instance = this;
 		}
+
+
 	}
 
 	// Use this for initialization
 	void Start () {
         FPC = player.GetComponent<FirstPersonController>();
+        TimeManager = GameObject.FindGameObjectWithTag("TimeManager");
         gameTimer = TimeManager.GetComponent<GameTimer>();
+
 		gameState = startState;
 	}
 

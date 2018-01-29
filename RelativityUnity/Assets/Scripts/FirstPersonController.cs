@@ -134,6 +134,12 @@ using System.Collections;
             }
         }
 
+        if (m_CharacterController.transform.position.y < -5)
+        {
+            playerDied = true;
+            gameOver = true;
+        }
+
     }
 
 
@@ -384,7 +390,6 @@ using System.Collections;
 
             if (body == null || body.isKinematic)
             {
-
                 return;
             }
             if (body.GetComponent<ObjectProperties>().IsPushable())

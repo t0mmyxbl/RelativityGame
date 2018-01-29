@@ -10,6 +10,7 @@ TagManager:
   - Final
   - keycard
   - Walkable
+  - TimeManager
   layers:
   - Default
   - TransparentFX

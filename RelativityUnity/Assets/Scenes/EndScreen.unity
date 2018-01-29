@@ -882,8 +882,7 @@ MonoBehaviour:
   player: {fileID: 1283702116151382, guid: 00ef535233cd6284385044e8d8352efa, type: 2}
   TimeManager: {fileID: 1252189016591546, guid: a3fa5bab3c0f43e46b858332f0557448,
     type: 2}
-  endMessage: {fileID: 114145644239692704, guid: 436d72bec6e1e074e87e61f8fc9aff05,
-    type: 2}
+  endMessage: {fileID: 2030204344}
 --- !u!114 &1837497747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,3 +1048,9 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 436d72bec6e1e074e87e61f8fc9aff05, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2030204344 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114145644239692704, guid: 436d72bec6e1e074e87e61f8fc9aff05,
+    type: 2}
+  m_PrefabInternal: {fileID: 2030204343}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
