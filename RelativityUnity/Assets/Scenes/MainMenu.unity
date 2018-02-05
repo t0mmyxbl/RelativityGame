@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 81017492}
   - component: {fileID: 81017491}
   m_Layer: 5
-  m_Name: b_Play
+  m_Name: b_Return
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009299006}
+      - m_Target: {fileID: 1209919038}
         m_MethodName: Return
         m_Mode: 1
         m_Arguments:
@@ -888,7 +888,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009299006}
+      - m_Target: {fileID: 1209919038}
         m_MethodName: Help
         m_Mode: 1
         m_Arguments:
@@ -1294,6 +1294,50 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1135533372}
+--- !u!1 &1209919037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1209919039}
+  - component: {fileID: 1209919038}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1209919038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1209919037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2518bd662d7574f961d318146f9066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 0
+  startState: 0
+  MainMenu: {fileID: 461317639}
+  HelpMenu: {fileID: 110085258}
+--- !u!4 &1209919039
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1209919037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 479.26, y: 165.28015, z: 0.0625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1310150377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,7 +1445,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009299006}
+      - m_Target: {fileID: 1209919038}
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -1590,7 +1634,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009299006}
+      - m_Target: {fileID: 1209919038}
         m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
@@ -1711,7 +1755,6 @@ GameObject:
   - component: {fileID: 2009299009}
   - component: {fileID: 2009299008}
   - component: {fileID: 2009299007}
-  - component: {fileID: 2009299006}
   m_Layer: 5
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1719,25 +1762,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2009299006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2009299005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49f23099b6f20e7428fed6e5b2d19856, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startState: 0
-  MainMenu: {fileID: 461317639}
-  MainHelpMenu: {fileID: 110085258}
-  OptionsMenu: {fileID: 0}
-  PauseMenu: {fileID: 0}
-  player: {fileID: 1283702116151382, guid: 00ef535233cd6284385044e8d8352efa, type: 2}
-  TimeManager: {fileID: 0}
-  endMessage: {fileID: 0}
 --- !u!114 &2009299007
 MonoBehaviour:
   m_ObjectHideFlags: 0

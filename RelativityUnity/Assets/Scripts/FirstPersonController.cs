@@ -5,6 +5,7 @@ using UnityStandardAssets.Utility;
 using UnityStandardAssets.Characters.FirstPerson;
 using Random = UnityEngine.Random;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
@@ -54,8 +55,8 @@ using System.Collections;
         private bool isOnRoof;
         private int numKeycards;
 
-        private bool gameOver;
-        private bool playerDied;    
+        private static bool gameOver;
+        private static bool playerDied;    
 
     // Use this for initialization
     private void Start()
@@ -81,6 +82,11 @@ using System.Collections;
         // Update is called once per frame
         private void Update()
         {
+
+        if (gameOver)
+        {
+            SceneManager.LoadScene("EndScreen");
+        }
 
         //set the character to be on the roof
         if ((m_CharacterController.collisionFlags == CollisionFlags.Above))
@@ -169,7 +175,7 @@ using System.Collections;
         m_MoveDir.x = desiredMove.x * speed;
         m_MoveDir.z = desiredMove.z * speed;
 
-        if (m_CharacterController.isGrounded || isOnRoof && !m_Jumping)
+        if ((m_CharacterController.isGrounded || isOnRoof) && !m_Jumping)
         {
                 m_MoveDir.y = g.gravity;
 
@@ -243,8 +249,6 @@ using System.Collections;
 						ExternalSFXSource.Play ();
 					}
 				}
-
-
             }
             if (objectInteract.tag == "Final")
             {
@@ -340,40 +344,6 @@ using System.Collections;
 
         }
 
-
-        private void GetInput(out float speed)
-        {
-            // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
-
-            bool waswalking = m_IsWalking;
-
-#if !MOBILE_INPUT
-            // On standalone builds, walk/run speed is modified by a key press.
-            // keep track of whether or not the character is walking or running
-            m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
-#endif
-            // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
-            m_Input = new Vector2(horizontal, vertical);
-
-            // normalize input if it exceeds 1 in combined length:
-            if (m_Input.sqrMagnitude > 1)
-            {
-                m_Input.Normalize();
-            }
-
-            // handle speed change to give an fov kick
-            // only if the player is going to a run, is running and the fovkick is to be used
-            if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
-            {
-                StopAllCoroutines();
-                StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
-            }
-        }
-
-
 	private void RotateView(){
 				m_MouseLook.LookRotation (transform, m_Camera.transform);
         }
@@ -398,12 +368,12 @@ using System.Collections;
             }
         }
 
-        public bool Get_gameOver()
+        public static bool Get_gameOver()
         {
             return gameOver;
         }
 
-        public bool Get_Death()
+        public static bool Get_Death()
         {
             return playerDied;
         }

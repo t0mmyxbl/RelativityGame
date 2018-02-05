@@ -6,13 +6,17 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour {
 
     private float time;
-    [SerializeField] private Text timeText;
+    [SerializeField] private Text timer;
+    public static string timeText;
+    [SerializeField] private GameObject Player;
+    private FirstPersonController FPC;
 
 	// Use this for initialization
 	void Start () {
+        FPC = Player.GetComponent<FirstPersonController>();
         time = 0;
-        timeText = GameObject.Find("Timer").GetComponent<Text>();
-        timeText.text = "00:00";
+        timer.text = "00:00";
+        timeText = timer.text;
 	}
 	
 	// Update is called once per frame
@@ -20,11 +24,12 @@ public class GameTimer : MonoBehaviour {
         time += Time.deltaTime;
         string minutes = Mathf.Floor(time / 60).ToString("00");
         string seconds = Mathf.Floor(time % 60).ToString("00");
-        timeText.text = minutes+":"+seconds;
+        timer.text = minutes+":"+seconds;
+        timeText = timer.text;
 	}
 
-    public string GetTime()
+    public static string GetTime()
     {
-        return timeText.text;
+        return timeText;
     }
 }

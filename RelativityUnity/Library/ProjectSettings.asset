@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: cc2fc3d411abbc948ab5f9c6c94c324e
+  productGUID: 5be14fec850b04344a5b1f83a6e7ca81
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: RelativityUnity
+  productName: RelativityNew
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -157,14 +157,8 @@ PlayerSettings:
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier:
-    Android: com.Company.ProductName
-    Standalone: unity.DefaultCompany.RelativityUnity
-    Tizen: com.Company.ProductName
-    iOS: com.Company.ProductName
-    tvOS: com.Company.ProductName
-  buildNumber:
-    iOS: 0
+  applicationIdentifier: {}
+  buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
@@ -240,7 +234,7 @@ PlayerSettings:
   iOSMetalForceHardShadows: 0
   metalEditorSupport: 1
   metalAPIValidation: 1
-  iOSRenderExtraFrameOnPause: 1
+  iOSRenderExtraFrameOnPause: 0
   appleDeveloperTeamID: 
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
@@ -274,13 +268,7 @@ PlayerSettings:
     Android: 1
     iPhone: 1
     tvOS: 1
-  m_BuildTargetGroupLightmapEncodingQuality:
-  - m_BuildTarget: Standalone
-    m_EncodingQuality: 1
-  - m_BuildTarget: XboxOne
-    m_EncodingQuality: 1
-  - m_BuildTarget: PS4
-    m_EncodingQuality: 1
+  m_BuildTargetGroupLightmapEncodingQuality: []
   wiiUTitleID: 0005000011000000
   wiiUGroupID: 00010000
   wiiUCommonSaveSize: 4096
@@ -444,7 +432,7 @@ PlayerSettings:
   ps4VideoOutPixelFormat: 0
   ps4VideoOutInitialWidth: 1920
   ps4VideoOutBaseModeInitialWidth: 1920
-  ps4VideoOutReprojectionRate: 120
+  ps4VideoOutReprojectionRate: 60
   ps4PronunciationXMLPath: 
   ps4PronunciationSIGPath: 
   ps4BackgroundImagePath: 
@@ -568,7 +556,6 @@ PlayerSettings:
     14: MOBILE_INPUT
     17: MOBILE_INPUT
     20: MOBILE_INPUT
-    22: MOBILE_INPUT
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}
@@ -577,14 +564,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: RelativityUnity
+  metroPackageName: RelativityNew
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: RelativityUnity
+  metroApplicationDescription: RelativityNew
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -650,12 +637,11 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 027073bd-6d40-4501-b202-638060679963
-  projectName: RelativityUnity
+  cloudProjectId: 34551b47-a120-4eba-ace2-bd055a674789
+  projectName: RelativityNew
   organizationId: t0mc
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

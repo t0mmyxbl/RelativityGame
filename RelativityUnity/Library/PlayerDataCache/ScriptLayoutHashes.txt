@@ -4,7 +4,7 @@ Assets/Scenes/MainMenu.unity
 Assets/Scenes/Game.unity
 Assets/Scenes/EndScreen.unity
 SceneListEnd?
-77fdf2bb99710c8fbcde2c923b1ec78a Assembly-CSharp.dll:.GameTimer
+de158649e3d2919324cc4d90e4a8f3e1 Assembly-CSharp.dll:.GameTimer
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -132,7 +132,6 @@ a90e94673f50d2237c1b971c138660c6 Assembly-CSharp.dll:UnityStandardAssets.Utility
 f0af303c7b5d9011d41ee10b7e36fb3d Assembly-CSharp.dll:.ObjectProperties
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.MobileControlRig
 a15a5bd2ceab4284768762503a10ba76 Assembly-CSharp.dll:.HoldObject
-32e8fe00b63ed946490b898f6024a2f2 Facebook.Unity.Settings.dll:Facebook.Unity.Settings.FacebookSettings
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -147,7 +146,6 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-d963dbb7eb441836c42dec6b99cc49fb Assembly-CSharp.dll:.GameManager
 7ea689a8830467f05f9b304a36f37e96 Assembly-CSharp.dll:UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
@@ -164,3 +162,7 @@ a8796ecdc9d5c260bbe32f30c4b10708 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Utilities.DontDestroyOnLoad
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FPSCounter
 1817f8cae9d351830099d9c3ac57bc71 Assembly-CSharp.dll:.OxygenLevels
+820b8cffdafd8099d97f1ff7b378eee5 Assembly-CSharp.dll:.MenuManager
+29e95c21ffb47840b72b6fc90012332b Assembly-CSharp.dll:.PauseManager
+e44f339bedf5a71fc200a114ee3f6d03 Assembly-CSharp.dll:.FinalTime
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.EndMenu

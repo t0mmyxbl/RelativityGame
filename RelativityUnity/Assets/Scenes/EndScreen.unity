@@ -698,7 +698,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1837497746}
-        m_MethodName: PlayGame
+        m_MethodName: PlayAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -844,6 +844,47 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440788483}
+--- !u!1 &1710271778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1710271779}
+  - component: {fileID: 1710271780}
+  m_Layer: 0
+  m_Name: FinalTime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1710271779
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1710271778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 308.75687, y: 176.70245, z: -2.3806012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1710271780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1710271778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230451b07118cc14eb5a9a5aedda5e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EndMessage: {fileID: 2030204344}
 --- !u!1 &1837497745
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,19 +911,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1837497745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49f23099b6f20e7428fed6e5b2d19856, type: 3}
+  m_Script: {fileID: 11500000, guid: 5592fe352e1926b44acc68dccad77c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 0
-  startState: 0
-  MainMenu: {fileID: 0}
-  MainHelpMenu: {fileID: 0}
-  OptionsMenu: {fileID: 0}
-  PauseMenu: {fileID: 0}
-  player: {fileID: 1283702116151382, guid: 00ef535233cd6284385044e8d8352efa, type: 2}
-  TimeManager: {fileID: 1252189016591546, guid: a3fa5bab3c0f43e46b858332f0557448,
-    type: 2}
-  endMessage: {fileID: 2030204344}
 --- !u!114 &1837497747
 MonoBehaviour:
   m_ObjectHideFlags: 0
