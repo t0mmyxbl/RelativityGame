@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [Serializable]
     public class MouseLook
     {
+        private Vector2 mouseLook;
+        private Vector2 smoothV;
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
         public bool clampVerticalRotation = true;
@@ -17,6 +18,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool lockCursor = true;
         public bool isRotated = false;
         public float playerRotation = 0;
+        public bool isFlipped = false;
+        private float zRot;
 
         public Quaternion m_CharacterTargetRot;
         public Quaternion m_CameraTargetRot;
@@ -31,28 +34,120 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera)
         {
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+            Vector2 mouseDirection = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+            mouseDirection = Vector2.Scale(mouseDirection, new Vector2(XSensitivity * smoothTime, YSensitivity * smoothTime));
+            smoothV.x = Mathf.Lerp(smoothV.x, mouseDirection.x, 1f / smoothTime);
+            smoothV.y = Mathf.Lerp(smoothV.y, mouseDirection.y, 1f / smoothTime);
 
+            mouseLook += smoothV;
 
-            m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
-            m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
-
-            if(clampVerticalRotation)
-               m_CameraTargetRot = ClampRotationAroundXAxis (m_CameraTargetRot);
-
-            if(smooth)
+            if (isFlipped)
             {
-                character.localRotation = Quaternion.Slerp (character.localRotation, m_CharacterTargetRot,
-                    smoothTime * Time.deltaTime);
-                camera.localRotation = Quaternion.Slerp (camera.localRotation, m_CameraTargetRot,
-                    smoothTime * Time.deltaTime);
+
+
+                if (zRot > 179)
+                {
+                    zRot = 180;
+
+                }
+                else
+                {
+                    zRot += 180 * (Time.deltaTime * 2);
+                }
+
+                mouseLook.y = Mathf.Clamp(mouseLook.y, -70f, 70f);
+                character.transform.localRotation = Quaternion.AngleAxis(-mouseLook.x, Vector3.up);
+                character.transform.localRotation *= Quaternion.AngleAxis(zRot, Vector3.forward);
+                camera.transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
+
             }
             else
             {
-                character.rotation = m_CharacterTargetRot;
-                camera.rotation = m_CameraTargetRot;
+                if (character.transform.localRotation.z == 0)
+                {
+                    mouseLook.y = Mathf.Clamp(mouseLook.y, -70f, 70f);
+                    character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
+                    camera.transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
+
+                }
+                else
+                {
+                    if (zRot < 0)
+                    {
+                        zRot = 0;
+                    }
+                    else
+                    {
+                        zRot -= 180 * (Time.fixedDeltaTime * 2);
+                    }
+
+
+                    mouseLook.y = Mathf.Clamp(mouseLook.y, -70f, 70f);
+                    character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, Vector3.up);
+                    character.transform.localRotation *= Quaternion.AngleAxis(zRot, Vector3.forward);
+                    camera.transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
+                }
+
             }
+
+            //float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+            //float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+
+            //m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+            //m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+
+
+            //if (clampVerticalRotation)
+            //    m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
+
+            //if (smooth)
+            //{
+            //    character.localRotation = Quaternion.Slerp(character.localRotation, m_CharacterTargetRot,
+            //        smoothTime * Time.deltaTime);
+            //    camera.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot,
+            //        smoothTime * Time.deltaTime);
+            //}
+            //else
+            //{
+            //    character.rotation = m_CharacterTargetRot;
+            //    camera.rotation = m_CameraTargetRot;
+            //}
+
+            //if (isFlipped)
+            //{
+            //    if (zRot > 179)
+            //    {
+            //        zRot = 180;
+            //    }
+            //    else
+            //    {
+            //        zRot += 180 * (Time.deltaTime * 2);
+            //    }
+
+            //    character.localRotation *= Quaternion.AngleAxis(zRot, Vector3.forward);
+
+            //}
+            //else
+            //{
+            //    if (character.transform.localRotation.z < 0)
+            //    {
+            //        zRot = 0;
+            //    }
+            //    else
+            //    {
+            //        if (zRot < 0)
+            //        {
+            //            zRot = 0;
+            //        }
+            //        else
+            //        {
+            //            zRot -= 180 * (Time.deltaTime * 2);
+            //        }
+            //    }
+            //    character.localRotation *= Quaternion.AngleAxis(zRot, Vector3.forward);
+            //}
+
 
             UpdateCursorLock();
         }

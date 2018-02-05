@@ -33,12 +33,12 @@ public class PlayerGravity : MonoBehaviour {
 
     void ChangeGravity()
     {
-		
+            FPC.m_MouseLook.isFlipped = !FPC.m_MouseLook.isFlipped;
             Physics.gravity *= -1;
     		gravity *= -1;
             FPC.m_JumpSpeed *= -1;
-    		transform.Rotate(0, 0, 180, Space.Self);
-            FPC.m_MouseLook.Init(transform, FPC.m_Camera.transform);
+    		//transform.Rotate(0, 0, 180, Space.Self);
+            //FPC.m_MouseLook.Init(transform, FPC.m_Camera.transform);
     }		
 
 }

@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelativityUnity", "Assembly-CSharp.csproj", "{FBC6999B-DA41-CE7B-1F2E-93D46227D1D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelativityUnity", "Assembly-CSharp-firstpass.csproj", "{67715CBB-8C7A-A4DF-F9F7-364074A8506D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelativityUnity", "Assembly-CSharp-Editor-firstpass.csproj", "{2546D0D9-A3D3-F213-EB99-8821C3625558}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBC6999B-DA41-CE7B-1F2E-93D46227D1D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC6999B-DA41-CE7B-1F2E-93D46227D1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC6999B-DA41-CE7B-1F2E-93D46227D1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC6999B-DA41-CE7B-1F2E-93D46227D1D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67715CBB-8C7A-A4DF-F9F7-364074A8506D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67715CBB-8C7A-A4DF-F9F7-364074A8506D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67715CBB-8C7A-A4DF-F9F7-364074A8506D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67715CBB-8C7A-A4DF-F9F7-364074A8506D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2546D0D9-A3D3-F213-EB99-8821C3625558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2546D0D9-A3D3-F213-EB99-8821C3625558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2546D0D9-A3D3-F213-EB99-8821C3625558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2546D0D9-A3D3-F213-EB99-8821C3625558}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
