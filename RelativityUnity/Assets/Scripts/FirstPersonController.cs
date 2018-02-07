@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
     public class FirstPersonController : MonoBehaviour
     {
         public float m_JumpSpeed;
-        public MouseLook m_MouseLook;
+        private MouseLook mouseLook;
         public Camera m_Camera;
 
 		
@@ -72,7 +72,8 @@ using UnityEngine.SceneManagement;
             gameOver = false;
             playerDied = false;
             m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Camera.transform);
+        mouseLook = GetComponentInChildren<MouseLook>();
+			//m_MouseLook.Init(transform , m_Camera.transform);
             g = GetComponent<PlayerGravity>();
             oxygenScript = GetComponent<OxygenLevels>();
             numKeycards = 0;
@@ -82,7 +83,7 @@ using UnityEngine.SceneManagement;
         // Update is called once per frame
         private void Update()
         {
-        print(transform.rotation);
+
         if (gameOver)
         {
             SceneManager.LoadScene("EndScreen");
@@ -94,7 +95,7 @@ using UnityEngine.SceneManagement;
         else
             isOnRoof = false;
         //rotate view used for mouse input
-        RotateView ();
+        //RotateView ();
 
 			// the jump state needs to read here to make sure it is not missed
             //if the player isnt jumping and the player presses the jump button, set jump to true
@@ -199,7 +200,7 @@ using UnityEngine.SceneManagement;
         ProgressStepCycle(speed);
         UpdateCameraPosition(speed);
 
-        m_MouseLook.UpdateCursorLock();
+        mouseLook.UpdateCursorLock();
 
     }
 
@@ -378,9 +379,9 @@ using UnityEngine.SceneManagement;
 
         }
 
-	private void RotateView(){
-				m_MouseLook.LookRotation (transform, m_Camera.transform);
-        }
+	//private void RotateView(){
+	//			m_MouseLook.LookRotation (transform, m_Camera.transform);
+ //       }
 
 
         private void OnControllerColliderHit(ControllerColliderHit hit)

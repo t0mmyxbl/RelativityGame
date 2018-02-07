@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f56e1363f189ab74b8789d9dfadc0f5b
-timeCreated: 1517336551
+timeCreated: 1517968688
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -12,9 +12,19 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Door_Door_Door_Door_Door_Door_Door_Door_Door_Door_Door_Door_Door_Door_Door_Door_pCube13
-    7400000: Take 001
+    6400000: //RootNode
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #49'
+    second: {fileID: 2100000, guid: 0583f264774324643935ff4ffa39ca3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #50'
+    second: {fileID: 2100000, guid: a0cfe666de6c1dd4fb37123ee32e043f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +56,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -69,7 +79,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -88,7 +98,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

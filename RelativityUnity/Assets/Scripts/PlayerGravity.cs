@@ -11,11 +11,13 @@ public class PlayerGravity : MonoBehaviour {
 
     public float gravity = -6f;
 	private FirstPersonController FPC;
+    private MouseLook mouseLook;
 
 	void Start()
 	{
 		//m_AudioSource = GetComponent<AudioSource>();
 		FPC = GetComponent <FirstPersonController> ();
+        mouseLook = GetComponentInChildren<MouseLook>();
 	}
 
 	void Update()
@@ -33,7 +35,7 @@ public class PlayerGravity : MonoBehaviour {
 
     void ChangeGravity()
     {
-            FPC.m_MouseLook.isFlipped = !FPC.m_MouseLook.isFlipped;
+            mouseLook.isFlipped = !mouseLook.isFlipped;
             Physics.gravity *= -1;
     		gravity *= -1;
             FPC.m_JumpSpeed *= -1;

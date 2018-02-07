@@ -5,10 +5,12 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour{
 
     [SerializeField] private GameObject PauseMenu;
+    [SerializeField] private GameObject player;
+    private MouseLook mouseLook;
 
 	// Use this for initialization
 	void Start () {
-		
+        mouseLook = player.GetComponentInChildren<MouseLook>();
 	}
 	
 	// Update is called once per frame
@@ -16,6 +18,7 @@ public class PauseManager : MonoBehaviour{
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
+
         }
 	}
 
@@ -24,7 +27,7 @@ public class PauseManager : MonoBehaviour{
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
+        mouseLook.enabled = false;
         PauseMenu.SetActive(true);
 
         StartCoroutine(WaitForEndOfFrame());
@@ -36,7 +39,7 @@ public class PauseManager : MonoBehaviour{
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
-
+        mouseLook.enabled = true;
         PauseMenu.SetActive(false);
 
         StartCoroutine(WaitForEndOfFrame());
